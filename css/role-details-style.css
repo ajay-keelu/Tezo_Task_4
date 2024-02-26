@@ -1,0 +1,201 @@
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap");
+
+#management>ul>li a {
+  border-radius: 5px;
+}
+
+#management>ul>li:has(a.active)::after {
+  position: absolute;
+  content: "";
+  right: -15px;
+  top: 2.5%;
+  background: rgb(244, 72, 72);
+  height: 95%;
+  width: 3px;
+  border-radius: 2px 0 0 2px;
+}
+
+#management>ul>li>a.active::after {
+  position: absolute;
+  content: "\f054";
+  right: 10px;
+  color: rgb(244, 72, 72) !important;
+  font-family: "FontAwesome";
+  transition: all 0.3s ease-in-out;
+}
+
+#management .active {
+  background: rgb(253, 233, 233);
+  color: rgb(244, 72, 72);
+}
+
+#management a:hover {
+  background: rgb(253, 233, 233);
+  color: rgb(244, 72, 72);
+}
+
+.management img {
+  stroke: rgb(156, 122, 76) !important;
+}
+
+.main-content .page-header {
+  padding: 10px 0px;
+}
+
+.main-content .page-left h3 {
+  color: #4c5f71;
+  font-family: "PT Sans", sans-serif;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+}
+
+.main-content .page-left h3 a {
+  color: #4c5f71;
+  text-decoration: none;
+}
+
+.page-header h3 i img {
+  height: 10px;
+  margin: 0 10px;
+  color: #b0b1b3;
+  -webkit-text-stroke: 1px #b0b1b3;
+}
+
+.main-content .scroll-item {
+  width: 100%;
+  padding: 0 15px;
+}
+
+.role-description p {
+  color: #838f9c;
+  font-size: 12.8px;
+}
+
+.role-all-profiles {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.role-all-profiles .role-profile-card {
+  padding: 15px;
+  background: #ffffff;
+  border-radius: 8px;
+  margin: 6px;
+  width: 318px;
+  border: 1px solid rgb(211, 211, 211);
+  transition: all 0.3s ease-in-out;
+}
+
+.role-all-profiles .role-profile-card:hover {
+  box-shadow: 0px 8px 18px 8px rgba(211, 211, 211, 0.655);
+}
+
+.role-all-profiles .role-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.role-profile-card .role-image {
+  height: 28px;
+  width: 28px;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.role-profile-card .role-profile-description {
+  display: flex;
+  flex-direction: column;
+}
+
+.role-profile-description .name {
+  font-weight: 700;
+  font-size: 13px;
+  color: #303030;
+  cursor: pointer;
+}
+
+.role-profile-description .sub-line {
+  font-size: 13px;
+  color: #202020;
+}
+
+.role-profile-card .profile-information {
+  padding: 0px 5px;
+  width: 100%;
+}
+
+.profile-information div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 0;
+}
+
+.profile-information div span {
+  font-size: 12px;
+  color: #4f555c;
+}
+
+.profile-information div img {
+  height: 16px;
+}
+
+.role-profile-card .view-more {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.role-profile-card .view-more .view {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.role-profile-card .view-more .view:hover img {
+  transform: translateX(8px);
+}
+
+.role-profile-card .view-more .view span {
+  font-size: 12px;
+}
+
+.role-profile-card .view-more .view img {
+  width: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+.scrool-content {
+  height: 58vh;
+  width: 100%;
+  overflow: hidden;
+  overflow-y: scroll;
+  padding-bottom: 50px;
+}
+
+.scrool-content::-webkit-scrollbar,
+.scrool-content::-webkit-scrollbar:horizontal {
+  width: 3px;
+  height: 3px;
+}
+
+.scrool-content::-webkit-scrollbar-track,
+.scrool-content::-webkit-scrollbar-track:horizontal {
+  display: none;
+}
+
+.scrool-content::-webkit-scrollbar-thumb,
+.scrool-content::-webkit-scrollbar-thumb:horizontal {
+  background-color: #ff9f9f;
+  border-radius: 3px;
+}

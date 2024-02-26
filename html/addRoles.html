@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tezo</title>
+  <link rel="icon" href="../assests/images/favicon-logo.svg" type="image/svg" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/role-details-style.css" />
+  <link rel="stylesheet" href="../css/add-employee-style.css" />
+  <link rel="stylesheet" href="../css/add-roles-style.css" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <div class="logo">
+        <a href="" title="TEZO">
+          <img src="../assests/images/tezoLogo.png" height="35px" alt="logo" />
+          <img src="../assests/images/tezoLogo.svg" alt="logo" />
+        </a>
+        <img src="../assests/images/handle.png" alt="direction" id="sidebarToggle" onclick="sideBarToggle()" />
+      </div>
+      <section id="all">
+        <label class="title">ALL</label>
+        <ul>
+          <li>
+            <a title="Dashboard" href="#">
+              <img src="../assests/images/menu.svg" alt="Dashboard" />
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a title="Employees" href="index.html">
+              <img src="../assests/images/employees-black.svg" alt="employee" />
+              <span>Employees</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section id="management">
+        <label class="title">ROLE <span>/ USER MANAGEMENT</span></label>
+        <ul>
+          <li>
+            <a class="active" title="Roles" href="roles.html">
+              <img src="../assests/images/settings-outline.svg" height="20px" alt="role" />
+              <span>Roles</span>
+            </a>
+          </li>
+          <li>
+            <a title="UAccess rights" href="#">
+              <img src="../assests/images/user.svg" alt="user" />
+              <span>Access rights</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section id="install">
+        <div class="title">Install new update 2.3.1A</div>
+        <p>Allow to launch the new update for the AD application</p>
+        <div class="buttons">
+          <button class="dismiss">Dismiss</button>
+          <button class="accept">Accept</button>
+        </div>
+      </section>
+    </div>
+    <div class="main-content">
+      <div class="toast">
+        <div class="toast-success">
+          <div class="icon">
+            <img src="../assests/images/circle-check.svg" alt="success" />
+          </div>
+          <div class="message"></div>
+        </div>
+      </div>
+      <div class="search-header">
+        <div class="search-bar">
+          <div class="logo">
+            <a href="" title="TEZO">
+              <img src="../assests/images/tezoLogo.svg" alt="logo" />
+            </a>
+          </div>
+          <div class="mobile-view-wrapper">
+            <div class="search-wrapper">
+              <label for="mobileSearchBar">
+                <img src="../assests/images/search.png" alt="search" />
+              </label>
+              <input type="checkbox" id="mobileSearchBar" />
+              <input type="search" placeholder="Search" />
+            </div>
+            <label for="mobileSidebar">
+              <img src="../assests/images/menu-outline-bars.svg" alt="menu" class="fa fa-bars" />
+            </label>
+            <input type="checkbox" id="mobileSidebar" />
+            <div class="sidebar">
+              <div class="logo">
+                <a href="" title="TEZO">
+                  <img src="../assests/images/tezoLogo.svg" alt="logo" />
+                </a>
+                <label for="mobile-sidebar">x</label>
+                <img src="../assests/images/handle.png" alt="direction" />
+              </div>
+              <section id="all">
+                <label class="title">ALL</label>
+                <ul>
+                  <li>
+                    <a title="Dashboard" href="#">
+                      <img src="../assests/images/menu.svg" alt="Dashboard" />
+                      <span>Dashboard</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a title="Employees" href="index.html">
+                      <img src="../assests/images/employees-black.svg" alt="Employees" />
+                      <span>Employees</span>
+                    </a>
+                  </li>
+                </ul>
+              </section>
+              <section id="management">
+                <label class="title">ROLE / USER MANAGEMENT</label>
+                <ul>
+                  <li>
+                    <a class="active" title="Roles" href="roles.html" target="_self">
+                      <img src="../assests/images/settings-outline.svg" alt="roles" width="20px" />
+                      <span>Roles</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a title="Access rights" href="#">
+                      <img src="../assests/images/user.svg" alt="user" />
+                      <span>Access rights</span>
+                    </a>
+                  </li>
+                </ul>
+              </section>
+              <section id="sidebarIcons">
+                <div class="icons-wrapper">
+                  <img src="../assests/images/translate.png" alt="translate" />
+                  <img src="../assests/images/menu.png" alt="menu" />
+                  <img src="../assests/images/dark-mode.png" alt="dark-mode" />
+                  <img src="../assests/images/notification.png" alt="translate" />
+                </div>
+              </section>
+              <section id="install">
+                <div class="title">Install new update 2.3.1A</div>
+                <p>Allow to launch the new update for the AD application</p>
+                <div class="buttons">
+                  <button class="dismiss">Dismiss</button>
+                  <button class="accept">Accept</button>
+                </div>
+              </section>
+            </div>
+            <div class="item-wrapper">
+              <div class="icons-wrapper">
+                <img src="../assests/images/translate.png" alt="translate" />
+                <img src="../assests/images/menu.png" alt="menu" />
+                <img src="../assests/images/dark-mode.png" alt="dark-mode" />
+                <img src="../assests/images/notification.png" alt="translate" />
+              </div>
+              <div class="profile">
+                <div class="profile-img">
+                  <img src="../assests/images/profile-images/profile-image-one.webp" alt="profile" width="30px" />
+                </div>
+                <div class="description">
+                  <div class="name">Jhon Abraham</div>
+                  <div class="role">Admin</div>
+                </div>
+                <div class="fa-icon">
+                  <img class="fa fa-chevron-down" src="../assests/images/chevron-down.svg" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="role-adder">
+        <form id="roleForm">
+          <div class="title">Create New Role</div>
+          <div class="role-department">
+            <div class="role-detail">
+              <label>Role Name</label>
+              <input type="text" placeholder="Text" class="input-form-element" name="roleName"
+                onchange="getRoleData(this.value,this.name)" />
+              <span id="role">
+                <b class="exclamation"><b>!</b></b> <b style="text-transform:capitalize">Role name</b>
+                field is required
+              </span>
+            </div>
+            <div class="role-detail">
+              <label>Department</label>
+              <select class="input-form-element" name="department" onchange="getRoleData(this.value,this.name)">
+                <option value="">Select</option>
+                <option value="UIUX">UIUX</option>
+                <option value="IT">IT</option>
+                <option value="Product Engineering">Product Engg.</option>
+              </select>
+              <span id="department">
+                <b class="exclamation"><b>!</b></b> <b style="text-transform:capitalize">department</b>
+                field is required
+              </span>
+            </div>
+          </div>
+          <div class="role-detail description">
+            <label>Description</label>
+            <textarea name="description" onchange="getRoleData(this.value,this.name)" class="input-form-element"
+              placeholder="Text"></textarea>
+            <span id="description">
+              <b class="exclamation"><b>!</b></b> <b style="text-transform:capitalize">description</b>
+              field is required
+            </span>
+          </div>
+          <div class="location role-detail">
+            <label>Location</label>
+            <select name="location" class="input-form-element" onchange="getRoleData(this.value,this.name)">
+              <option value="">Select</option>
+              <option value="Hyderabad">Hyderabad</option>
+              <option value="Banglore">Banglore</option>
+              <option value="Vijayawada">Vijayawada</option>
+            </select>
+            <span id="location">
+              <b class="exclamation"><b>!</b></b> <b style="text-transform:capitalize">location</b>
+              field is required
+            </span>
+          </div>
+          <div class="assign-employees role-detail">
+            <label>Assign Employees</label>
+            <div class="input-form-element">
+              <input type="text" name="employeeSearch" id="employeeSearch" placeholder="Search" />
+              <div class="employee-bubble"></div>
+            </div>
+            <label for="employeeSearch" class="search-employee-data"> </label>
+          </div>
+          <div class="btn-wrapper">
+            <div class="cancel">
+              <button type="reset" onclick="window.location='roles.html'">Cancel</button>
+            </div>
+            <div class="add-employee">
+              <button id="addrole">Add Role</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- <script src="../js/constants/constants.js"></script>
+  <script src="../js/services/models.js"></script>
+  <script src="../js/services/roleServices.js"></script>
+  <script src="../js/services/employeeServices.js"></script>
+  <script src="../js/addRole.js"></script> -->
+  <script src="../ts-js/constants/constants.js"></script>
+  <script src="../ts-js/services/models.js"></script>
+  <script src="../ts-js/services/roleServices.js"></script>
+  <script src="../ts-js/services/employeeServices.js"></script>
+  <script src="../ts-js/addRole.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tezo</title>
+  <link rel="icon" href="../assests/images/favicon-logo.svg" type="image/svg" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <div class="logo">
+        <a href="" title="TEZO">
+          <img src="../assests/images/tezoLogo.png" alt="logo" />
+          <img src="../assests/images/tezoLogo.svg" alt="logo" />
+        </a>
+        <img src="../assests/images/handle.png" alt="direction" id="sidebarToggle" onclick="sideBarToggle()" />
+      </div>
+      <section id="all">
+        <label class="title">ALL</label>
+        <ul>
+          <li>
+            <a title="Dashboard" href="">
+              <img src="../assests/images/menu.svg" alt="Dashboard" />
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a class="active" title="Employees" href="index.html">
+              <img src="../assests/images/employees.svg" alt="Employees" />
+              <span>Employees</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section id="management">
+        <label class="title">ROLE <span>/ USER MANAGEMENT</span></label>
+        <ul>
+          <li>
+            <a title="Roles" href="roles.html" target="_self">
+              <img src="../assests/images/roles.svg" alt="roles" />
+              <span>Roles</span>
+            </a>
+          </li>
+          <li>
+            <a title="Access rights" href="#">
+              <img src="../assests/images/user.svg" alt="user" />
+              <span>Access rights</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section id="sidebarIcons">
+        <div class="icons-wrapper">
+          <img src="../assests/images/translate.png" alt="translate" />
+          <img src="../assests/images/menu.png" alt="menu" />
+          <img src="../assests/images/dark-mode.png" alt="dark-mode" />
+          <img src="../assests/images/notification.png" alt="translate" />
+        </div>
+      </section>
+      <section id="install">
+        <div class="title">Install new update 2.3.1A</div>
+        <p>Allow to launch the new update for the AD application</p>
+        <div class="buttons">
+          <button class="dismiss">Dismiss</button>
+          <button class="accept">Accept</button>
+        </div>
+      </section>
+    </div>
+    <div class="main-content">
+      <div class="search-header">
+        <div class="search-bar">
+          <div class="logo">
+            <a href="" title="TEZO">
+              <img src="../assests/images/tezoLogo.svg" alt="logo" />
+            </a>
+          </div>
+          <div class="mobile-view-wrapper">
+            <div class="search-wrapper">
+              <label for="mobileSearchBar">
+                <img src="../assests/images/search.png" alt="search" />
+              </label>
+              <input type="checkbox" id="mobileSearchBar" />
+              <input type="search" placeholder="Search" />
+            </div>
+            <label for="mobileSidebar">
+              <img src="../assests/images/menu-outline-bars.svg" alt="menu" class="fa fa-bars" />
+            </label>
+            <input type="checkbox" id="mobileSidebar" />
+            <div class="sidebar">
+              <div class="logo">
+                <a href="" title="TEZO">
+                  <img src="../assests/images/tezoLogo.svg" alt="logo" />
+                </a>
+                <label for="mobile-sidebar">X</label>
+                <img src="../assests/images/handle.png" alt="direction" />
+              </div>
+              <section id="all">
+                <label class="title">ALL</label>
+                <ul>
+                  <li>
+                    <a title="Dashboard" href="#">
+                      <img src="../assests/images/menu.svg" alt="Dashboard" />
+                      <span>Dashboard</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="active" title="Employees" href="index.html">
+                      <img src="../assests/images/employees.svg" alt="Employees" />
+                      <span>Employees</span>
+                    </a>
+                  </li>
+                </ul>
+              </section>
+              <section id="management">
+                <label class="title">ROLE / USER MANAGEMENT</label>
+                <ul>
+                  <li>
+                    <a title="Roles" href="roles.html" target="_self">
+                      <img src="../assests/images/roles.svg" alt="roles" />
+                      <span>Roles</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a title="Access rights" href="#">
+                      <img src="../assests/images/user.svg" alt="user" />
+                      <span>Access rights</span>
+                    </a>
+                  </li>
+                </ul>
+              </section>
+              <section id="sidebarIcons">
+                <div class="icons-wrapper">
+                  <img src="../assests/images/translate.png" alt="translate" />
+                  <img src="../assests/images/menu.png" alt="menu" />
+                  <img src="../assests/images/dark-mode.png" alt="dark-mode" />
+                  <img src="../assests/images/notification.png" alt="translate" />
+                </div>
+              </section>
+              <section id="install">
+                <div class="title">Install new update 2.3.1A</div>
+                <p>Allow to launch the new update for the AD application</p>
+                <div class="buttons">
+                  <button class="dismiss">Dismiss</button>
+                  <button class="accept">Accept</button>
+                </div>
+              </section>
+            </div>
+            <div class="item-wrapper">
+              <div class="icons-wrapper">
+                <img src="../assests/images/translate.png" alt="translate" />
+                <img src="../assests/images/menu.png" alt="menu" />
+                <img src="../assests/images/dark-mode.png" alt="dark-mode" />
+                <img src="../assests/images/notification.png" alt="translate" />
+              </div>
+              <div class="profile">
+                <div class="profile-img">
+                  <img src="../assests/images/profile-images/profile-image-one.webp" alt="profile" width="30px" />
+                </div>
+                <div class="description">
+                  <div class="name">Jhon Abraham</div>
+                  <div class="role">Admin</div>
+                </div>
+                <div class="fa-icon">
+                  <img class="fa fa-chevron-down" src="../assests/images/chevron-down.svg" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page-header">
+          <div class="page page-left">
+            <h1>Employees</h1>
+            <p>
+              Find all of your company's employee accounts and their
+              associated roles.
+            </p>
+          </div>
+          <div class="page page-right">
+            <button class="filter-btn">
+              <label for="mobileFilterDivision">
+                <img src="../assests/images/filter.png" alt="filter" />
+              </label>
+            </button>
+            <input type="checkbox" id="mobileFilterDivision" />
+            <div class="mobile-filter-division-items">
+              <div class="logo">
+                <a href="" title="TEZO">
+                  <img src="../assests/images/tezoLogo.svg" alt="logo" />
+                </a>
+                <label for="mobileFilterDivision">x</label>
+              </div>
+              <div class="buttons-wrapper" id="buttonsWrapper"></div>
+              <div class="dropdown-select">
+                <select class="select-item status">
+                  <option value="">Status</option>
+                  <option value="Active">Active</option>
+                  <option value="In Active">In Active</option>
+                </select>
+                <select class="select-item location">
+                  <option value="">Location</option>
+                  <option value="Vijayawada">Vijayawada</option>
+                  <option value="Hyderabad">Hyderabad</option>
+                  <option value="Banglore">Banglore</option>
+                </select>
+                <select class="select-item department">
+                  <option value="">Department</option>
+                  <option value="Product Engineering">Product Engineering</option>
+                  <option value="IT">IT</option>
+                  <option value="UIUX">UIUX</option>
+                </select>
+              </div>
+            </div>
+            <button class="export" onclick="exportDataToCSV()">
+              <img src="../assests/images/upload.png" alt="upload" />
+              <span>Export</span>
+            </button>
+            <button class="add-employee">
+              <a href="employee.html">
+                <img src="../assests/images/add.svg" alt="add" />
+                <span>add employee</span>
+              </a>
+            </button>
+          </div>
+        </div>
+        <p>
+          Find all of your company's employee accounts and their associated
+          roles.
+        </p>
+        <div class="filter-buttons-wrapper filter-aplhabets" id="filterBtns">
+          <button onclick="removeAlphabetFilter()">
+            <img src="../assests/images/filter.png" alt="filter" />
+          </button>
+        </div>
+        <div class="filter-content">
+          <form id="dropdownFilterForm">
+            <div class="filter-bar">
+              <div class="left-item">
+                <div class="filter">
+                  <span>Filter</span>
+                  <label for="dropdown-select">
+                    <img src="../assests/images/filter-bar.png" alt="filter" />
+                  </label>
+                  <input type="checkbox" id="dropdownSelect" />
+                  <div class="dropdown-select">
+                    <select name="status" class="select-item status"
+                      onchange="employeeDropdownFilter(this.value,this.name)">
+                      <option value="">Status</option>
+                      <option value="Active"> Active </option>
+                      <option value="In Active">In Active</option>
+                    </select>
+                    <select name="location" onchange="employeeDropdownFilter(this.value,this.name)"
+                      class="select-item location">
+                      <option value="">Location</option>
+                      <option value="Vijayawada">Vijayawada</option>
+                      <option value="Hyderabad">Hyderabad</option>
+                      <option value="Banglore">Banglore</option>
+                    </select>
+                    <select name="department" onchange="employeeDropdownFilter(this.value,this.name)"
+                      class="select-item department">
+                      <option value="">Department</option>
+                      <option value="IT">IT</option>
+                      <option value="UIUX">UIUX</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="right-item" id="hideResetBtns">
+                <input type="reset" class="reset" onclick="removeDropdownFilter()" />
+                <input type="button" onclick="displayFilteredEmployees()" value="Apply" class="apply" />
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="table-main">
+        <div class="table-content">
+          <div class="table-modifiers">
+            <div class="delete-modifier">
+              <img src="../assests/images/turn-down-arrow.png" alt="turn-down-arrow" />
+              <button onclick="deleteEmployeesUsingCheckbox()" disabled="true" id="deleteBtn">
+                Delete
+              </button>
+            </div>
+            <div class="table-add-icon">
+              <a href="employee.html">
+                <img src="../assests/images/table-add.svg" alt="table-add-icon" />
+              </a>
+            </div>
+          </div>
+          <div class="table-body">
+            <table id="employeeTableData"></table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="../ts-js/services/employeeServices.js"></script>
+  <script src="../ts-js/constants/constants.js"></script>
+  <script src="../ts-js/index.js"></script>
+</body>
+
+</html>

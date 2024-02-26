@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "ES5",
+        "outDir": "ts-js/",
+        "rootDir": "ts/",
+        "lib": [
+            "es6",
+            "dom",
+            "es2016",
+            "ES2021"
+        ]
+    }
+}
