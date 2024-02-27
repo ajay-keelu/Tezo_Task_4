@@ -41,7 +41,6 @@ class Role {
     public location: string
     public id: string
     public employeesAssigned: Employee[]
-    public isCheckedRole?: boolean
     constructor(role: { roleName: string, department: string, description: string, location: string, employeesAssigned: Employee[], id: string }) {
         this.roleName = role.roleName
         this.department = role.department

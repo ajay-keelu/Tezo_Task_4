@@ -1,16 +1,35 @@
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var inputEmployeeSearch = document.querySelector('.assign-employees input[name="employeeSearch"]');
-var employees = employeeServices.getAllEmployees();
+var Employees;
 var currentRoleDetails = {
     roleName: '',
     department: '',
     description: '',
     location: '',
     id: '',
-    employeesAssigned: [],
-    isCheckedRole: false
+    employeesAssigned: []
 };
 var searchId = window.location.search.slice(4);
-searchId ? editRole(searchId) : "";
+searchId ? editRole(searchId) : employees = employeeServices.getAllEmployees();
+//displaying the searchable data at the assign employees section
+function displayEmployeeCard(filterData) {
+    var empData = "";
+    filterData.forEach(function (employee) {
+        var employeeCard = Constants.EmployeeCardDropdown.replaceAll('{{empId}}', employee.empno).replace('{{image}}', employee.image).replace('{{firstname}}', employee.firstname).replace('{{lastname}}', employee.lastname).replace('{{checked}}', employee.isCheckedRole ? "checked" : "-");
+        empData += employeeCard;
+    });
+    document.querySelector(".search-employee-data").innerHTML = empData;
+}
 var roleRequiredFields = ["roleName", "department", "description", "location"];
 // resetting the form
 function roleResetForm() {
@@ -20,9 +39,8 @@ function roleResetForm() {
         var field = roleRequiredFields_1[_i];
         (_a = document.querySelector("#".concat(field))) === null || _a === void 0 ? void 0 : _a.removeAttribute('error');
     }
-    employees.forEach(function (employee) { return employee.isCheckedRole = false; });
+    Employees.forEach(function (employee) { return employee.isCheckedRole = false; });
     displayEmployeeRoleBubble();
-    displayEmployeeCard([]);
 }
 // add role form submission
 document.querySelector('#addrole').addEventListener('click', function (e) {
@@ -58,7 +76,7 @@ inputEmployeeSearch.addEventListener("keyup", function (e) {
     document.querySelector(".search-employee-data").style.display = "flex";
     var filterArray = [];
     if (e.target.value) {
-        employees.forEach(function (employee) {
+        Employees.forEach(function (employee) {
             var name = employee.firstname + employee.lastname;
             name.toLowerCase().includes(e.target.value.toLowerCase()) ? filterArray.push(employee) : "";
         });
@@ -70,46 +88,38 @@ inputEmployeeSearch.addEventListener("blur", function (e) {
         document.querySelector(".search-employee-data").style.display = "none";
     }
 });
-//displaying the searchable data at the assign employees section
-function displayEmployeeCard(filterData) {
-    var empData = "";
-    filterData.forEach(function (employee) {
-        var employeeCard = Constants.EmployeeCardDropdown.replaceAll('{{empId}}', employee.empno).replace('{{image}}', employee.image).replace('{{firstname}}', employee.firstname).replace('{{lastname}}', employee.lastname).replace('{{checked}}', employee.isCheckedRole ? "checked" : "");
-        empData += employeeCard;
-    });
-    document.querySelector(".search-employee-data").innerHTML = empData;
-}
 // used to remove the employee from the assigned role
 function removeFromEmployeeBubble(empno) {
     var employee = document.querySelector(".employee-card #emp".concat(empno));
     employee ? (employee.checked = false) : "";
-    employees.forEach(function (element) { return element.empno == empno ? (element.isCheckedRole = false) : ""; });
+    Employees.forEach(function (element) { return element.empno == empno ? (element.isCheckedRole = false) : ""; });
     displayEmployeeRoleBubble();
 }
 //displaying the assigned employees to the role
 function displayEmployeeRoleBubble() {
     var employeeBubble = document.querySelector(".employee-bubble");
-    employeeBubble.innerHTML = "";
+    var innerData = "";
     var flag = true;
-    employees.forEach(function (employee) {
+    Employees.forEach(function (employee) {
         if (employee.isCheckedRole) {
             flag = false;
             var bubbleCard = Constants.EmployeeBubble;
             bubbleCard = bubbleCard.replace('{{empId}}', employee.empno).replace('{{firstname}}', employee.firstname).replace('{{image}}', employee.image);
-            employeeBubble.innerHTML += bubbleCard;
+            innerData += bubbleCard;
         }
     });
+    employeeBubble.innerHTML = innerData;
     employeeBubble.style.display = flag ? "none" : "flex";
     inputEmployeeSearch.style.maxWidth = flag ? "100%" : "calc(100% - 147px)";
     employeeBubble.style.width = flag ? "0" : "147px";
 }
 // adding employees to the role
 function assignEmployeesToRole(empno) {
-    employees.forEach(function (employee) { return employee.empno == empno ? employee.isCheckedRole = document.querySelector(".employee-card #emp".concat(empno)).checked : ""; });
+    Employees.forEach(function (employee) { return employee.empno == empno ? employee.isCheckedRole = document.querySelector(".employee-card #emp".concat(empno)).checked : ""; });
     displayEmployeeRoleBubble();
 }
 function getRoleData(value, key) {
-    role[key] = value;
+    currentRoleDetails[key] = value;
 }
 // displaying the toast message
 function toastToggleRole(message) {
@@ -129,11 +139,12 @@ function editRole(id) {
     document.querySelector('select[name="location"]').value = roleData.location;
     document.querySelector('textarea[name="description"]').value = roleData.description;
     var employeesAssigned = roleData.employeesAssigned;
-    var employeeData = employeeServices.getAllEmployees();
-    employeeData.forEach(function (employee) {
-        employeesAssigned.forEach(function (emp) { return employee.empno == emp.empno ? employee.isCheckedRole = true : ""; });
+    Employees = employeeServices.getAllEmployees();
+    Employees.forEach(function (employee) {
+        employeesAssigned.forEach(function (emp) {
+            employee.empno == emp.empno ? employee.isCheckedRole = true : "";
+        });
     });
-    employees = employeeData;
-    currentRoleDetails = roleData;
+    currentRoleDetails = __assign({}, roleData);
     displayEmployeeRoleBubble();
 }
