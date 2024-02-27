@@ -9,7 +9,7 @@ interface Role {
     employeesAssigned: Employee[],
     isCheckedRole?: boolean
 }
-let currentRoleDetails: Role = {
+var currentRoleDetails: Role = {
     roleName: '',
     department: '',
     description: '',
@@ -26,8 +26,8 @@ let roleRequiredFields: string[] = ["roleName", "department", "description", "lo
 // resetting the form
 function roleResetForm(): void {
     document.querySelector<HTMLFormElement>("#roleForm").reset();
-    for (let field of requiredFields) {
-        document.querySelector(`#${field}`).removeAttribute('error')
+    for (let field of roleRequiredFields) {
+        document.querySelector<HTMLElement>(`#${field}`)?.removeAttribute('error')
     }
     employees.forEach((employee: Employee) => employee.isCheckedRole = false)
     displayEmployeeRoleBubble()
@@ -40,14 +40,14 @@ document.querySelector<HTMLElement>('#addrole').addEventListener('click', (e: Ev
     let isValid: boolean = false;
     roleRequiredFields.forEach((field => {
         let spanElement: HTMLElement | null = document.querySelector(`#${field}`);
-        if (!role[field]) {
+        if (!currentRoleDetails[field]) {
             isValid = true;
             spanElement?.setAttribute('error', "")
         } else spanElement?.removeAttribute('error')
     }))
     if (isValid) return;
-    role["employeesAssigned"] = employees.filter(employee => employee.isCheckedRole)
-    let roleData: Role = new models.Role(role)
+    currentRoleDetails["employeesAssigned"] = employees.filter(employee => employee.isCheckedRole)
+    let roleData: Role = new models.Role(currentRoleDetails)
     let id: string = !searchId ? roleServices.generateId() : searchId;
     roleData.id = id;
     let rolesData: Role[] = roleServices.getRoles();
@@ -56,7 +56,7 @@ document.querySelector<HTMLElement>('#addrole').addEventListener('click', (e: Ev
     toastToggleRole(searchId ? "Role Updated Successfully" : "Role Added Successfully");
     setTimeout(() => {
         toastToggleRole("");
-        resetForm();
+        roleResetForm();
         searchId ? window.location.href = "roles.html" : ""
     }, 1500);
 })

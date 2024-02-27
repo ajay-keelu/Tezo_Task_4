@@ -14,10 +14,11 @@ searchId ? editRole(searchId) : "";
 var roleRequiredFields = ["roleName", "department", "description", "location"];
 // resetting the form
 function roleResetForm() {
+    var _a;
     document.querySelector("#roleForm").reset();
-    for (var _i = 0, requiredFields_1 = requiredFields; _i < requiredFields_1.length; _i++) {
-        var field = requiredFields_1[_i];
-        document.querySelector("#".concat(field)).removeAttribute('error');
+    for (var _i = 0, roleRequiredFields_1 = roleRequiredFields; _i < roleRequiredFields_1.length; _i++) {
+        var field = roleRequiredFields_1[_i];
+        (_a = document.querySelector("#".concat(field))) === null || _a === void 0 ? void 0 : _a.removeAttribute('error');
     }
     employees.forEach(function (employee) { return employee.isCheckedRole = false; });
     displayEmployeeRoleBubble();
@@ -29,7 +30,7 @@ document.querySelector('#addrole').addEventListener('click', function (e) {
     var isValid = false;
     roleRequiredFields.forEach((function (field) {
         var spanElement = document.querySelector("#".concat(field));
-        if (!role[field]) {
+        if (!currentRoleDetails[field]) {
             isValid = true;
             spanElement === null || spanElement === void 0 ? void 0 : spanElement.setAttribute('error', "");
         }
@@ -38,8 +39,8 @@ document.querySelector('#addrole').addEventListener('click', function (e) {
     }));
     if (isValid)
         return;
-    role["employeesAssigned"] = employees.filter(function (employee) { return employee.isCheckedRole; });
-    var roleData = new models.Role(role);
+    currentRoleDetails["employeesAssigned"] = employees.filter(function (employee) { return employee.isCheckedRole; });
+    var roleData = new models.Role(currentRoleDetails);
     var id = !searchId ? roleServices.generateId() : searchId;
     roleData.id = id;
     var rolesData = roleServices.getRoles();
@@ -48,7 +49,7 @@ document.querySelector('#addrole').addEventListener('click', function (e) {
     toastToggleRole(searchId ? "Role Updated Successfully" : "Role Added Successfully");
     setTimeout(function () {
         toastToggleRole("");
-        resetForm();
+        roleResetForm();
         searchId ? window.location.href = "roles.html" : "";
     }, 1500);
 });
