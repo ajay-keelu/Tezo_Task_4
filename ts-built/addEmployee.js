@@ -92,7 +92,8 @@ function toastToggle(message) {
 //displayDataIntoInput
 function displayDataIntoInput(employee, mode) {
     document.querySelector(".left-wrapper .img-wrapper img").src = employee.image;
-    document.querySelector("label[for=\"file\"]").style.display = mode == 'edit' ? '../assests/images/file-pen.svg' : "none";
+    document.querySelector("label[for=\"file\"]").style.display = mode == 'edit' ? '' : "none";
+    document.querySelector("label[for=\"file\"] img").src = mode == 'edit' ? "../assests/images/file-pen.svg" : "none";
     document.querySelector(".employee-details > .title").innerText = mode + " Employee";
     for (var key in employee)
         key != "status" && key != "image" ? document.getElementsByName("".concat(key == 'role' ? 'jobTitle' : key))[0].value = employee[key] : "";

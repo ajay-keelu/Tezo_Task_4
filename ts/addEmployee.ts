@@ -110,7 +110,8 @@ function toastToggle(message: string): void {
 //displayDataIntoInput
 function displayDataIntoInput(employee: Employee, mode: string): void {
     document.querySelector<HTMLImageElement>(".left-wrapper .img-wrapper img").src = employee.image
-    document.querySelector<HTMLLabelElement>(`label[for="file"]`).style.display = mode == 'edit' ? '../assests/images/file-pen.svg' : "none";
+    document.querySelector<HTMLLabelElement>(`label[for="file"]`).style.display = mode == 'edit' ? '' : "none";
+    document.querySelector<HTMLImageElement>(`label[for="file"] img`).src = mode == 'edit' ? "../assests/images/file-pen.svg" : "none";
     document.querySelector<HTMLElement>(".employee-details > .title").innerText = mode + " Employee";
     for (let key in employee)
         key != "status" && key != "image" ? (document.getElementsByName(`${key == 'role' ? 'jobTitle' : key}`)[0] as HTMLInputElement).value = employee[key] : ""
