@@ -1,3 +1,8 @@
+interface filterDropDown {
+    department: string,
+    location: string
+}
+
 // displaying the all the roles
 function displayRoles(roles: Role[]): void {
     let innerData: string = ""
@@ -24,10 +29,10 @@ function redirectToEmployees(id: string): void {
 }
 displayRoles(roleServices.getRoles())
 
-let filterDropDown = {}
+let filterDropDown: filterDropDown = { department: '', location: '' }
 let hideResetBtns: HTMLElement | null = document.querySelector('#hideResetBtns')
 //on change select dropdown filter
-function filterChange(value: string, key: string) {
+function filterChange(value: string, key: string): void {
     filterDropDown[key] = value;
     let flag = false;
     for (let key in filterDropDown) {
@@ -41,11 +46,11 @@ hideResetBtns.style.display = "none"
 document.querySelector<HTMLElement>('.right-item .reset').addEventListener('click', (): void => displayRoles(roleServices.getRoles()))
 
 // on clicking apply filter will be applied
-document.querySelector<HTMLElement>('.right-item .apply').addEventListener('click', (e: Event) => {
+document.querySelector<HTMLElement>('.right-item .apply').addEventListener('click', (e: Event): void => {
     e.preventDefault();
-    let filteredData = [];
+    let filteredData: Role[] = [];
     getRoles().forEach((role) => {
-        let flag = true;
+        let flag: boolean = true;
         for (let key in filterDropDown) {
             if (filterDropDown[key] && role[key] != filterDropDown[key]) flag = false;
         }

@@ -14,20 +14,20 @@ function deleteEmployeeById(id: string): void {
     setEmployeeData(getAllEmployees().filter(employee => employee.empno != id))
 }
 
-function updateEmployee(employee: Employee) {
+function updateEmployee(employee: Employee): void {
     let employees: Employee[] = getAllEmployees()
     let index: number = employees.findIndex(ele => ele.empno == employee.empno)
     employees[index] = employee;
     setEmployeeData(employees)
 }
 
-function addEmployee(employee: Employee) {
+function addEmployee(employee: Employee): void {
     let employees: Employee[] = getAllEmployees()
     employees.push(employee)
     setEmployeeData(employees)
 }
 
-function saveEmployee(employee: Employee, mode: string) {
+function saveEmployee(employee: Employee, mode: string): void {
     mode == 'update' ? updateEmployee(employee) : addEmployee(employee)
 }
 

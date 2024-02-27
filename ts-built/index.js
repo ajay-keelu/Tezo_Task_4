@@ -11,7 +11,7 @@ function sideBarToggle() {
 function exportDataToCSV() {
     var exportData = getFilteredEmployees();
     var csvFile = "S.No, User, Location, Departmant, Role, Employee ID, Status, Join Dt \n";
-    exportData.forEach(function (employee, i) { return csvFile += "".concat(i + 1, ",").concat(employee.firstname + " " + employee.lastname, ", ").concat(employee.location, ", ").concat(employee.department, ",").concat(employee.role, ",").concat(employee.empno, ",").concat(employee.status, ",").concat(employee.joiningDate, "\n"); });
+    exportData.forEach(function (employee, i) { return csvFile += "".concat(i + 1, ",").concat(employee.firstname + " " + employee.lastname, ", ").concat(employee.location, ", ").concat(employee.department, ",").concat(employee.jobTitle, ",").concat(employee.empno, ",").concat(employee.status, ",").concat(employee.joiningDate, "\n"); });
     document.body.innerHTML = ("<a style=\"display:none\" href=\"data:text/csv;charset=utf-8,".concat(encodeURI(csvFile), "\" download=\"employees.csv\"></a>")) + document.body.innerHTML;
     document.links[0].click();
 }
@@ -93,7 +93,7 @@ function displayFilteredEmployees() {
     filteredEmps.forEach(function (employee) {
         var row = Constants.EmployeeRow;
         empTable += row.replaceAll('{{employeeNumber}}', employee.empno).replace('{{firstname}}', employee.firstname).replace('{{lastname}}', employee.lastname).replace('{{image}}', employee.image).replace('{{email}}', employee.email).replace('{{location}}', employee.location)
-            .replace('{{department}}', employee.department).replace('{{role}}', employee.role).replace('{{status}}', employee.status)
+            .replace('{{department}}', employee.department).replace('{{role}}', employee.jobTitle).replace('{{status}}', employee.status)
             .replace('{{joiningDate}}', employee.joiningDate);
     });
     var tableElement = document.querySelector("#employeeTableData");

@@ -1,5 +1,5 @@
-class Employee {
-    constructor(employee) {
+var Employee = /** @class */ (function () {
+    function Employee(employee) {
         this.image = employee.image;
         this.firstname = employee.firstname;
         this.lastname = employee.lastname;
@@ -10,21 +10,22 @@ class Employee {
         this.dob = employee.dob;
         this.department = employee.department;
         this.status = employee.status;
-        this.role = employee.jobTitle;
+        this.jobTitle = employee.jobTitle;
         this.joiningDate = employee.joiningDate;
         this.assignManager = employee.assignManager;
         this.assignProject = employee.assignProject;
     }
-}
-
-class Role {
-    constructor(role) {
-        this.roleName = role.role
-        this.department = role.department
-        this.description = role.description
-        this.location = role.location
-        this.employeesAssigned = role.employeesAssigned
+    return Employee;
+}());
+var Role = /** @class */ (function () {
+    function Role(role) {
+        this.roleName = role.roleName;
+        this.department = role.department;
+        this.description = role.description;
+        this.location = role.location;
+        this.id = role.id;
+        this.employeesAssigned = role.employeesAssigned;
     }
-}
-
-var models = { Employee, Role }
+    return Role;
+}());
+var models = { Employee: Employee, Role: Role };

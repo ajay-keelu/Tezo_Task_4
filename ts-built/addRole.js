@@ -11,6 +11,7 @@ var currentRoleDetails = {
 };
 var searchId = window.location.search.slice(4);
 searchId ? editRole(searchId) : "";
+var roleRequiredFields = ["roleName", "department", "description", "location"];
 // resetting the form
 function roleResetForm() {
     document.querySelector("#roleForm").reset();
@@ -23,7 +24,6 @@ function roleResetForm() {
     displayEmployeeCard([]);
 }
 // add role form submission
-var roleRequiredFields = ["roleName", "department", "description", "location"];
 document.querySelector('#addrole').addEventListener('click', function (e) {
     e.preventDefault();
     var isValid = false;
@@ -123,7 +123,7 @@ function editRole(id) {
     }
     document.querySelector('#addrole').innerHTML = "Update";
     document.querySelector('form .title').innerHTML = "Edit Role";
-    document.querySelector('input[name="role"]').value = roleData.roleName;
+    document.querySelector('input[name="roleName"]').value = roleData.roleName;
     document.querySelector('select[name="department"]').value = roleData.department;
     document.querySelector('select[name="location"]').value = roleData.location;
     document.querySelector('textarea[name="description"]').value = roleData.description;

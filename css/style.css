@@ -489,6 +489,7 @@ body .container {
   background: rgb(34, 171, 95);
   bottom: -5px;
   right: -3px;
+  z-index: 1;
   border-radius: 5px;
   border: 1.4px solid #fff;
 }

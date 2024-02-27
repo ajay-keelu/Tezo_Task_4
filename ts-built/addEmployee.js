@@ -1,5 +1,20 @@
 var empId, mode;
-var employeeFormDetails = { status: "Active", image: "../assests/images/user-profile.jpg" };
+var employeeFormDetails = {
+    image: "../assests/images/user-profile.jpg",
+    firstname: "",
+    lastname: "",
+    status: "Active",
+    email: "",
+    empno: "",
+    location: "",
+    mobile: "",
+    dob: "",
+    department: "",
+    jobTitle: "",
+    joiningDate: "",
+    assignManager: "",
+    assignProject: ""
+};
 // on form input changes invoking the function
 function onFormInputChange(value, name) {
     employeeFormDetails[name] = value;
@@ -11,7 +26,7 @@ function getImage(imagedata) {
     reader.readAsDataURL(imagedata.files[0]);
     reader.onload = function () {
         document.querySelector(".left-wrapper .img-wrapper img").src = reader.result;
-        employeeFormDetails["image"] = reader.result;
+        employeeFormDetails.image = reader.result;
     };
     reader.onerror = function () { return alert("Please upload the image again!"); };
 }
@@ -46,7 +61,22 @@ document.querySelector(".form-add-employee").addEventListener("click", function 
         return;
     var employee = new models.Employee(employeeFormDetails);
     employeeServices.saveEmployee(employee, mode == "edit" ? "update" : "create");
-    employeeFormDetails = { status: "Active", image: "../assests/images/user-profile.jpg" };
+    employeeFormDetails = {
+        image: "../assests/images/user-profile.jpg",
+        firstname: "",
+        lastname: "",
+        status: "Active",
+        email: "",
+        empno: "",
+        location: "",
+        mobile: "",
+        dob: "",
+        department: "",
+        jobTitle: "",
+        joiningDate: "",
+        assignManager: "",
+        assignProject: ""
+    };
     toastToggle(mode != "edit" ? "Employee Added Successfully" : "Updated Successfully");
     setTimeout(function () {
         toastToggle("");
@@ -74,12 +104,12 @@ function editPage(id) {
     employeeFormDetails = editEmployee;
     document.querySelector(".employment-information .btn-wrapper .add-employee button").innerHTML = 'Update';
     displayDataIntoInput(editEmployee, "edit");
-    // document.querySelector<HTMLInputElement>(`input[name="empno"]`).disabled = "true";
+    (document.querySelector("input[name=\"empno\"]")).disabled = true;
 }
 // redirecting view page to edit page
 function editEmployee(event, id) {
     event.preventDefault();
-    window.location.href = 'employee.html?id=' + empId + '&mode=edit';
+    window.location.href = 'employee.html?id=' + id + '&mode=edit';
 }
 //deleting the employee
 function deleteEmployeeUsingId(event, id) {
@@ -102,7 +132,8 @@ function getModeandId() {
     var URL = window.location.search.slice(1);
     _a = URL ? URL.split('&') : ["", ""], empId = _a[0], mode = _a[1];
     empId = empId ? empId.slice(3) : "";
-    mode = mode ? mode.slice(5) : ""((mode == "view" || mode == "edit") && !empId) ? window.location = "index.html" : "";
+    mode = mode ? mode.slice(5) : "";
+    ((mode == "view" || mode == "edit") && !empId) ? window.location.href = "index.html" : "";
     mode == "view" && empId ? viewPage(empId) : mode == "edit" && empId ? editPage(empId) : "";
 }
 getModeandId();

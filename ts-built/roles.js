@@ -22,7 +22,7 @@ function redirectToEmployees(id) {
     window.location.href = 'rolesDetails.html?id=' + id;
 }
 displayRoles(roleServices.getRoles());
-var filterDropDown = {};
+var filterDropDown = { department: '', location: '' };
 var hideResetBtns = document.querySelector('#hideResetBtns');
 //on change select dropdown filter
 function filterChange(value, key) {

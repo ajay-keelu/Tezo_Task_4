@@ -21,7 +21,7 @@ function sideBarToggle(): void {
 function exportDataToCSV(): void {
     let exportData: Employee[] = getFilteredEmployees();
     let csvFile: string = "S.No, User, Location, Departmant, Role, Employee ID, Status, Join Dt \n";
-    exportData.forEach((employee, i) => csvFile += `${i + 1},${employee.firstname + " " + employee.lastname}, ${employee.location}, ${employee.department},${employee.role},${employee.empno},${employee.status},${employee.joiningDate}\n`);
+    exportData.forEach((employee, i) => csvFile += `${i + 1},${employee.firstname + " " + employee.lastname}, ${employee.location}, ${employee.department},${employee.jobTitle},${employee.empno},${employee.status},${employee.joiningDate}\n`);
     document.body.innerHTML = (`<a style="display:none" href="data:text/csv;charset=utf-8,${encodeURI(csvFile)}" download="employees.csv"></a>`) + document.body.innerHTML
     document.links[0].click();
 }
@@ -110,7 +110,7 @@ function displayFilteredEmployees(): void {
     filteredEmps.forEach(employee => {
         let row: string = Constants.EmployeeRow;
         empTable += row.replaceAll('{{employeeNumber}}', employee.empno).replace('{{firstname}}', employee.firstname).replace('{{lastname}}', employee.lastname).replace('{{image}}', employee.image).replace('{{email}}', employee.email).replace('{{location}}', employee.location)
-            .replace('{{department}}', employee.department).replace('{{role}}', employee.role).replace('{{status}}', employee.status)
+            .replace('{{department}}', employee.department).replace('{{role}}', employee.jobTitle).replace('{{status}}', employee.status)
             .replace('{{joiningDate}}', employee.joiningDate);
     });
     let tableElement: HTMLElement | null = document.querySelector("#employeeTableData");

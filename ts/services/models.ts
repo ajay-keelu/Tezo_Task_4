@@ -9,7 +9,7 @@ class Employee {
     public dob: string
     public department: string
     public status: string
-    public role: string
+    public jobTitle: string
     public joiningDate: string
     public assignManager: string
     public assignProject: string
@@ -27,7 +27,7 @@ class Employee {
         this.dob = employee.dob;
         this.department = employee.department;
         this.status = employee.status;
-        this.role = employee.jobTitle;
+        this.jobTitle = employee.jobTitle;
         this.joiningDate = employee.joiningDate;
         this.assignManager = employee.assignManager;
         this.assignProject = employee.assignProject;
