@@ -20,7 +20,7 @@ var currentRoleDetails = {
     employeesAssigned: []
 };
 var searchId = window.location.search.slice(4);
-searchId ? editRole(searchId) : employees = employeeServices.getAllEmployees();
+searchId ? editRole(searchId) : Employees = employeeServices.getAllEmployees();
 //displaying the searchable data at the assign employees section
 function displayEmployeeCard(filterData) {
     var empData = "";
@@ -57,7 +57,7 @@ document.querySelector('#addrole').addEventListener('click', function (e) {
     }));
     if (isValid)
         return;
-    currentRoleDetails["employeesAssigned"] = employees.filter(function (employee) { return employee.isCheckedRole; });
+    currentRoleDetails["employeesAssigned"] = Employees.filter(function (employee) { return employee.isCheckedRole; });
     var roleData = new models.Role(currentRoleDetails);
     var id = !searchId ? roleServices.generateId() : searchId;
     roleData.id = id;

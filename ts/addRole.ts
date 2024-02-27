@@ -17,7 +17,7 @@ var currentRoleDetails: Role = {
     employeesAssigned: []
 }
 let searchId: string = window.location.search.slice(4);
-searchId ? editRole(searchId) : employees = employeeServices.getAllEmployees()
+searchId ? editRole(searchId) : Employees = employeeServices.getAllEmployees()
 
 //displaying the searchable data at the assign employees section
 function displayEmployeeCard(filterData: Employee[]): void {
@@ -53,7 +53,7 @@ document.querySelector<HTMLElement>('#addrole').addEventListener('click', (e: Ev
         } else spanElement?.removeAttribute('error')
     }))
     if (isValid) return;
-    currentRoleDetails["employeesAssigned"] = employees.filter(employee => employee.isCheckedRole)
+    currentRoleDetails["employeesAssigned"] = Employees.filter(employee => employee.isCheckedRole)
     let roleData: Role = new models.Role(currentRoleDetails)
     let id: string = !searchId ? roleServices.generateId() : searchId;
     roleData.id = id;
