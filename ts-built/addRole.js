@@ -25,7 +25,7 @@ searchId ? editRole(searchId) : Employees = employeeServices.getAllEmployees();
 function displayEmployeeCard(filterData) {
     var empData = "";
     filterData.forEach(function (employee) {
-        var employeeCard = Constants.EmployeeCardDropdown.replaceAll('{{empId}}', employee.empno).replace('{{image}}', employee.image).replace('{{firstname}}', employee.firstname).replace('{{lastname}}', employee.lastname).replace('{{checked}}', employee.isCheckedRole ? "checked" : "-");
+        var employeeCard = Constants.EmployeeCardDropdown.replaceAll('{{empId}}', employee.empno).replace('{{image}}', employee.image).replace('{{firstname}}', employee.firstname).replace('{{lastname}}', employee.lastname).replace('{{checked}}', employee.isCheckedRole ? "checked" : "");
         empData += employeeCard;
     });
     document.querySelector(".search-employee-data").innerHTML = empData;
