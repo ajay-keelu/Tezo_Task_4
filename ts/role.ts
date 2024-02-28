@@ -13,7 +13,7 @@ if (!role) {
 
 // getting the asigned employees
 let assignedEmployees: Employee[] = role.employeesAssigned;
-let roleDescription: HTMLElement | null = document.getElementById('description')
+let roleDescription = document.getElementById('description') as HTMLDivElement | null
 roleDescription ? roleDescription.innerHTML = role.description : ""
 
 //displaying the assigned employees
@@ -24,7 +24,7 @@ function displayRoleAssignedEmployees(data: Employee[]) {
         roleDetailCard = roleDetailCard.replace('{{firstname}}', employee.firstname).replace('{{lastname}}', employee.lastname).replace('{{image}}', employee.image).replace('{{email}}', employee.email).replace('{{empno}}', employee.empno).replace('{{department}}', employee.department).replace('{{location}}', employee.location)
         innerData += roleDetailCard
     });
-    let employeeProfiles: HTMLElement | null = document.querySelector('.role-all-profiles')
+    let employeeProfiles: HTMLDivElement | null = document.querySelector('.role-all-profiles')
     employeeProfiles ? employeeProfiles.innerHTML = innerData : ''
 }
 // invoking display assigned employees 

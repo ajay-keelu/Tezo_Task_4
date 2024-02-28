@@ -35,18 +35,18 @@ let roleRequiredFields: string[] = ["roleName", "department", "description", "lo
 function roleResetForm(): void {
     document.querySelector<HTMLFormElement>("#roleForm").reset();
     for (let field of roleRequiredFields) {
-        document.querySelector<HTMLElement>(`#${field}`)?.removeAttribute('error')
+        document.querySelector<HTMLSpanElement>(`#${field}`)?.removeAttribute('error')
     }
     Employees.forEach((employee) => employee.isCheckedRole = false)
     displayEmployeeRoleBubble()
 }
 
 // add role form submission
-document.querySelector<HTMLElement>('#addrole').addEventListener('click', (e: Event): void => {
+document.querySelector<HTMLButtonElement>('#addrole').addEventListener('click', (e: Event): void => {
     e.preventDefault()
     let isValid: boolean = false;
     roleRequiredFields.forEach((field => {
-        let spanElement: HTMLElement | null = document.querySelector(`#${field}`);
+        let spanElement: HTMLSpanElement | null = document.querySelector(`#${field}`);
         if (!currentRoleDetails[field]) {
             isValid = true;
             spanElement?.setAttribute('error', "")
@@ -70,7 +70,7 @@ document.querySelector<HTMLElement>('#addrole').addEventListener('click', (e: Ev
 
 //on key change getting the employee containing the name
 inputEmployeeSearch.addEventListener("keyup", (e: Event): void => {
-    document.querySelector<HTMLElement>(".search-employee-data").style.display = "flex";
+    document.querySelector<HTMLLabelElement>(".search-employee-data").style.display = "flex";
     let filterArray: Employee[] = [];
     if ((e.target as HTMLInputElement).value) {
         Employees.forEach((employee) => {
@@ -83,7 +83,7 @@ inputEmployeeSearch.addEventListener("keyup", (e: Event): void => {
 
 inputEmployeeSearch.addEventListener("blur", (e: Event): void => {
     if (!(e.target as HTMLInputElement).value) {
-        document.querySelector<HTMLElement>(".search-employee-data").style.display = "none";
+        document.querySelector<HTMLLabelElement>(".search-employee-data").style.display = "none";
     }
 })
 
@@ -97,7 +97,7 @@ function removeFromEmployeeBubble(empno: string): void {
 
 //displaying the assigned employees to the role
 function displayEmployeeRoleBubble(): void {
-    let employeeBubble: HTMLElement | null = document.querySelector(".employee-bubble");
+    let employeeBubble: HTMLDivElement | null = document.querySelector(".employee-bubble");
     let innerData: string = ""
     let flag: boolean = true;
     Employees.forEach((employee) => {
@@ -126,8 +126,8 @@ function getRoleData(value: string, key: string): void {
 
 // displaying the toast message
 function toastToggleRole(message: string): void {
-    document.querySelector<HTMLElement>(".toast").classList.toggle("toast-toggle");
-    document.querySelector<HTMLElement>(".toast .message").innerText = message;
+    document.querySelector<HTMLDivElement>(".toast").classList.toggle("toast-toggle");
+    document.querySelector<HTMLDivElement>(".toast .message").innerText = message;
 }
 
 //required fields for the role page
@@ -136,8 +136,8 @@ function editRole(id: string): void {
     if (!roleData) {
         window.location.href = 'roles.html'
     }
-    document.querySelector<HTMLElement>('#addrole').innerHTML = "Update"
-    document.querySelector<HTMLElement>('form .title').innerHTML = "Edit Role"
+    document.querySelector<HTMLButtonElement>('#addrole').innerHTML = "Update"
+    document.querySelector<HTMLDivElement>('form .title').innerHTML = "Edit Role"
     document.querySelector<HTMLInputElement>('input[name="roleName"]').value = roleData.roleName;
     document.querySelector<HTMLSelectElement>('select[name="department"]').value = roleData.department;
     document.querySelector<HTMLSelectElement>('select[name="location"]').value = roleData.location;

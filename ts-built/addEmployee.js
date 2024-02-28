@@ -90,8 +90,8 @@ function toastToggle(message) {
 //displayDataIntoInput
 function displayDataIntoInput(employee, mode) {
     document.querySelector(".left-wrapper .img-wrapper img").src = employee.image;
-    document.querySelector(`label[for="file"]`).style.display = mode == 'edit' ? '' : "none";
-    document.querySelector(`label[for="file"] img`).src = mode == 'edit' ? "../assests/images/file-pen.svg" : "none";
+    document.querySelector(`label[for="file"]`).style.display = mode == 'Edit' ? '' : "none";
+    document.querySelector(`label[for="file"] img`).src = mode == 'Edit' ? "../assests/images/file-pen.svg" : "none";
     document.querySelector(".employee-details > .title").innerText = mode + " Employee";
     for (let key in employee)
         key != "status" && key != "image" ? document.getElementsByName(`${key == 'role' ? 'jobTitle' : key}`)[0].value = employee[key] : "";
@@ -102,7 +102,7 @@ function editPage(id) {
     !editEmployee ? window.location.href = "index.html" : "";
     employeeFormDetails = editEmployee;
     document.querySelector(".employment-information .btn-wrapper .add-employee button").innerHTML = 'Update';
-    displayDataIntoInput(editEmployee, "edit");
+    displayDataIntoInput(editEmployee, "Edit");
     (document.querySelector(`input[name="empno"]`)).disabled = true;
 }
 // redirecting view page to edit page

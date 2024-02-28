@@ -14,7 +14,7 @@ function displayRoles(roles: Role[]): void {
         roleCardData = roleCardData.replaceAll("{{roleId}}", role.id).replace("{{roleName}}", role.roleName).replace("{{roleLocation}}", role.location).replace("{{roleDepartment}}", role.department).replace('{{roleCardImageContainer}}', imageCardContainer)
         innerData += roleCardData
     });
-    let roleCards: HTMLElement | null = document.querySelector('.roles-items')
+    let roleCards: HTMLDivElement | null = document.querySelector('.roles-items')
     roleCards ? roleCards.innerHTML = innerData : '';
 }
 
@@ -30,7 +30,7 @@ function redirectToEmployees(id: string): void {
 displayRoles(roleServices.getRoles())
 
 let filterDropDown: filterDropDown = { department: '', location: '' }
-let hideResetBtns: HTMLElement | null = document.querySelector('#hideResetBtns')
+let hideResetBtns: HTMLDivElement | null = document.querySelector('#hideResetBtns')
 //on change select dropdown filter
 function filterChange(value: string, key: string): void {
     filterDropDown[key] = value;
@@ -43,10 +43,10 @@ function filterChange(value: string, key: string): void {
 hideResetBtns.style.display = "none"
 
 // on clicking reset displaying the all the roles
-document.querySelector<HTMLElement>('.right-item .reset').addEventListener('click', (): void => displayRoles(roleServices.getRoles()))
+document.querySelector<HTMLButtonElement>('.right-item .reset').addEventListener('click', (): void => displayRoles(roleServices.getRoles()))
 
 // on clicking apply filter will be applied
-document.querySelector<HTMLElement>('.right-item .apply').addEventListener('click', (e: Event): void => {
+document.querySelector<HTMLButtonElement>('.right-item .apply').addEventListener('click', (e: Event): void => {
     e.preventDefault();
     let filteredData: Role[] = [];
     getRoles().forEach((role) => {

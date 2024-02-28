@@ -33,9 +33,9 @@ function deleteEmployeesUsingCheckbox(): void {
     displayFilteredEmployees();
 }
 
-let prevPopUpBtn: HTMLElement | null;
-function popUpDisplay(e: HTMLElement): void {
-    e = e.parentNode as HTMLElement;
+let prevPopUpBtn: HTMLDivElement | null;
+function popUpDisplay(e: HTMLDivElement): void {
+    e = e.parentNode as HTMLDivElement;
     if (prevPopUpBtn && prevPopUpBtn == e) {
         prevPopUpBtn.classList.toggle("view-toggle"); return;
     }
@@ -56,7 +56,7 @@ function viewOrEditEmployee(empId: string, mode: string): void {
     window.location.href = `employee.html?id=${empId}&mode=${mode}`;
 }
 
-let prevSortBtn: HTMLElement | null;
+let prevSortBtn: HTMLImageElement | null;
 function sortData(key: string, order: string, selector: string): void {
     prevSortBtn ? prevSortBtn.style.background = "" : ""
     let sortedData: Employee[] = employees.sort(function (emp1: Employee, emp2: Employee): number {
@@ -70,7 +70,7 @@ function sortData(key: string, order: string, selector: string): void {
     });
     employees = sortedData;
     displayFilteredEmployees();
-    let currentEle: HTMLElement | null = document.querySelector(selector)
+    let currentEle: HTMLImageElement | null = document.querySelector(selector)
     currentEle ? currentEle.style.background = "rgb(251, 192, 192)" : "";
     prevSortBtn = currentEle
 }
@@ -113,7 +113,7 @@ function displayFilteredEmployees(): void {
             .replace('{{department}}', employee.department).replace('{{role}}', employee.jobTitle).replace('{{status}}', employee.status)
             .replace('{{joiningDate}}', employee.joiningDate);
     });
-    let tableElement: HTMLElement | null = document.querySelector("#employeeTableData");
+    let tableElement: HTMLTableElement | null = document.querySelector("#employeeTableData");
     tableElement ? (tableElement.innerHTML = (filteredEmps.length > 0 ? empTable : `<td colspan="9" style="text-align:center; padding:15px 0px">No data found</td>`)) : ""
 }
 
@@ -133,7 +133,7 @@ function employeeDropdownFilter(value: string, key: string): void {
     let flag = false;
     for (let key in selectedFilters)
         if (key != 'alphabet' && selectedFilters[key].length > 0) flag = true;
-    flag ? document.querySelector<HTMLElement>('#hideResetBtns').style.display = "block" : document.querySelector<HTMLElement>('#hideResetBtns').style.display = "none"
+    flag ? document.querySelector<HTMLDivElement>('#hideResetBtns').style.display = "block" : document.querySelector<HTMLDivElement>('#hideResetBtns').style.display = "none"
 }
 
 function removeAlphabetFilter(): void {
@@ -165,7 +165,7 @@ function removeDropdownFilter(): void {
 }
 
 function setAlphbetFilters(id: string): void {
-    let filterBtnEle: HTMLElement | null = document.getElementById(id);
+    let filterBtnEle = document.getElementById(id) as HTMLDivElement | null;
     let filterbtns = "";
     for (let i = 65; i <= 90; i++)
         filterbtns += `<button id="btn${String.fromCharCode(i + 32)}" onclick="onFilterAlphabet('${String.fromCharCode(i + 32)}')">${String.fromCharCode(i)}</button>`;
@@ -185,7 +185,7 @@ function loadFilters(): void {
 function initilalise(): void {
     loadEmployees()
     loadFilters()
-    let hideResetBtns: HTMLElement | null = document.querySelector('#hideResetBtns');
+    let hideResetBtns: HTMLDivElement | null = document.querySelector('#hideResetBtns');
     hideResetBtns ? hideResetBtns.style.display = "none" : ''
 }
 

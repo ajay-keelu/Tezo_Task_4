@@ -35,12 +35,12 @@ var employeeFormDetails: Employee = {
 }
 
 // on form input changes invoking the function
-function onFormInputChange(value: string, name: string) {
+function onFormInputChange(value: string, name: string): void {
     employeeFormDetails[name] = value;
 };
 
 //reading the image file
-function getImage(imagedata: HTMLInputElement) {
+function getImage(imagedata: HTMLInputElement): void {
     let reader: FileReader = new FileReader();
     reader.readAsDataURL(imagedata.files[0]);
     reader.onload = () => {
@@ -56,18 +56,18 @@ function resetForm(): void {
     document.querySelector<HTMLFormElement>("#employeeForm").reset();
     document.querySelector<HTMLImageElement>(".left-wrapper .img-wrapper img").src = employeeFormDetails.image;
     for (let field of requiredFields) {
-        let spanElement: HTMLElement | null = document.querySelector(`span[name="${field}"]`);
+        let spanElement: HTMLSpanElement | null = document.querySelector(`span[name="${field}"]`);
         spanElement ? spanElement.removeAttribute('error') : "";
     }
 }
 
 // form submit
 let requiredFields: string[] = ["empno", "email", "firstname", "lastname", "joiningDate"];
-document.querySelector<HTMLElement>(".form-add-employee").addEventListener("click", (e: Event) => {
+document.querySelector<HTMLButtonElement>(".form-add-employee").addEventListener("click", (e: Event) => {
     e.preventDefault();
     let isValid: boolean = false;
     for (let field of requiredFields) {
-        let ele = document.querySelector<HTMLElement>('span#' + field);
+        let ele = document.querySelector<HTMLSpanElement>('span#' + field);
         !employeeFormDetails[field] ? ele.setAttribute('error', '') : ele.removeAttribute('error');
         if (!employeeFormDetails[field])
             isValid = true
@@ -103,16 +103,16 @@ document.querySelector<HTMLElement>(".form-add-employee").addEventListener("clic
 
 // enabling the toast message on submitting the form
 function toastToggle(message: string): void {
-    document.querySelector<HTMLElement>(".toast").classList.toggle("toast-toggle");
-    document.querySelector<HTMLElement>(".toast .message").innerText = message;
+    document.querySelector<HTMLDivElement>(".toast").classList.toggle("toast-toggle");
+    document.querySelector<HTMLDivElement>(".toast .message").innerText = message;
 }
 
 //displayDataIntoInput
 function displayDataIntoInput(employee: Employee, mode: string): void {
     document.querySelector<HTMLImageElement>(".left-wrapper .img-wrapper img").src = employee.image
-    document.querySelector<HTMLLabelElement>(`label[for="file"]`).style.display = mode == 'edit' ? '' : "none";
-    document.querySelector<HTMLImageElement>(`label[for="file"] img`).src = mode == 'edit' ? "../assests/images/file-pen.svg" : "none";
-    document.querySelector<HTMLElement>(".employee-details > .title").innerText = mode + " Employee";
+    document.querySelector<HTMLLabelElement>(`label[for="file"]`).style.display = mode == 'Edit' ? '' : "none";
+    document.querySelector<HTMLImageElement>(`label[for="file"] img`).src = mode == 'Edit' ? "../assests/images/file-pen.svg" : "none";
+    document.querySelector<HTMLDivElement>(".employee-details > .title").innerText = mode + " Employee";
     for (let key in employee)
         key != "status" && key != "image" ? (document.getElementsByName(`${key == 'role' ? 'jobTitle' : key}`)[0] as HTMLInputElement).value = employee[key] : ""
 }
@@ -123,7 +123,7 @@ function editPage(id: string): void {
     !editEmployee ? window.location.href = "index.html" : "";
     employeeFormDetails = editEmployee;
     document.querySelector<HTMLButtonElement>(".employment-information .btn-wrapper .add-employee button").innerHTML = 'Update'
-    displayDataIntoInput(editEmployee, "edit");
+    displayDataIntoInput(editEmployee, "Edit");
     (document.querySelector<HTMLInputElement>(`input[name="empno"]`)).disabled = true;
 }
 
@@ -144,10 +144,10 @@ function deleteEmployeeUsingId(event: Event, id: string): void {
 function viewPage(id: string): void {
     let viewEmployee: Employee = employeeServices.getEmployeeById(id);
     !viewEmployee ? window.location.href = "index.html" : '';
-    document.querySelector<HTMLElement>("#editOrDelete").innerHTML += `<button class="edit" onclick="editEmployee(event,${id})">Edit</button>  <button class="delete" onclick = "deleteEmployeeUsingId(event,${id})" > Delete</button> `
+    document.querySelector<HTMLDivElement>("#editOrDelete").innerHTML += `<button class="edit" onclick="editEmployee(event,${id})">Edit</button>  <button class="delete" onclick = "deleteEmployeeUsingId(event,${id})" > Delete</button> `
     displayDataIntoInput(viewEmployee, 'View')
     Array.from(document.querySelector<HTMLFormElement>('#employeeForm').elements).forEach((ele: HTMLInputElement) => ele.disabled = true)
-    document.querySelector<HTMLElement>(".employment-information .btn-wrapper").style.display = "none";
+    document.querySelector<HTMLDivElement>(".employment-information .btn-wrapper").style.display = "none";
 }
 
 //getting mode and employee id if it exists
