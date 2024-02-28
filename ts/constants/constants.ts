@@ -34,8 +34,8 @@ var Constants = {
       <div class="head-role header">
         <span>role</span>
         <div class="icons">
-          <img id="up" src="../assests/images/chevron-up.svg" onclick="sortData('role','asec','.head-role #up')"  class="fa table-icon" alt="arrow-up">
-          <img id="down" src="../assests/images/chevron-down.svg" onclick="sortData('role','desc','.head-role #down')"  class="fa table-icon" alt="down-arrow"/>
+          <img id="up" src="../assests/images/chevron-up.svg" onclick="sortData('jobTitle','asec','.head-role #up')"  class="fa table-icon" alt="arrow-up">
+          <img id="down" src="../assests/images/chevron-down.svg" onclick="sortData('jobTitle','desc','.head-role #down')"  class="fa table-icon" alt="down-arrow"/>
         </div>
       </div>
     </td>
