@@ -27,7 +27,7 @@ function exportDataToCSV(): void {
 }
 
 function deleteEmployeesUsingCheckbox(): void {
-    let tableCheckbox: NodeListOf<HTMLInputElement> = document.querySelectorAll("input.table-checkbox")
+    let tableCheckbox: NodeListOf<HTMLInputElement> | null = document.querySelectorAll("input.table-checkbox")
     let selectedEmpIds: string[] = Array.from(tableCheckbox).filter(ele => ele.checked).map((element) => element.id);
     employees.forEach(employee => !employee.isDelete ? employee.isDelete = selectedEmpIds.includes(employee.empno) : "")
     displayFilteredEmployees();
@@ -76,7 +76,7 @@ function sortData(key: string, order: string, selector: string): void {
 }
 
 function employeeCheckBox(e: HTMLInputElement) {
-    let tableCheckbox: NodeListOf<HTMLInputElement> = document.querySelectorAll("input.table-checkbox");
+    let tableCheckbox: NodeListOf<HTMLInputElement> | null = document.querySelectorAll("input.table-checkbox");
     e && tableCheckbox?.forEach((element: HTMLInputElement) => e ? element.checked = e.checked : "")
     let flag: boolean = false;
     tableCheckbox.forEach((data) => data.checked ? (flag = true) : "");
@@ -143,7 +143,7 @@ function removeAlphabetFilter(): void {
         location: "",
         department: ""
     }
-    let filterBtns: NodeListOf<HTMLButtonElement> = document.querySelectorAll('#filterBtns button')
+    let filterBtns: NodeListOf<HTMLButtonElement> | null = document.querySelectorAll('#filterBtns button')
     filterBtns.forEach(ele => {
         if (ele.classList.contains('active')) ele.classList.remove('active')
     })

@@ -963,12 +963,9 @@ input[id="dropdownSelect"] {
 }
 
 .table-body .icons .fa {
-  color: #5d5d5e;
   cursor: pointer;
-  font-size: 4px;
-  padding: 0.4px 1px;
-  cursor: pointer;
-  -webkit-text-stroke: 1px black;
+  width: 10px;
+  height: 7px;
 }
 
 .table-body .icons .fa:hover {
