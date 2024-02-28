@@ -39,4 +39,4 @@ function validateForm(employee: Employee, mode: string): boolean {
     return validateEmail(employee.email) && (!mode ? validateEmployeeNumber(employee.empno) : true) && validateFirstname(employee.firstname)
 }
 
-var validation = { validateForm, validateEmail, validateEmployeeNumber, validateFirstname }
+let validation = { validateForm, validateEmail, validateEmployeeNumber, validateFirstname }

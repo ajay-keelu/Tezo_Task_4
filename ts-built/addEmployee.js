@@ -1,4 +1,4 @@
-var empId, mode;
+let empId, mode;
 var employeeFormDetails = {
     image: "../assests/images/user-profile.jpg",
     firstname: "",
@@ -22,13 +22,13 @@ function onFormInputChange(value, name) {
 ;
 //reading the image file
 function getImage(imagedata) {
-    var reader = new FileReader();
+    let reader = new FileReader();
     reader.readAsDataURL(imagedata.files[0]);
-    reader.onload = function () {
+    reader.onload = () => {
         document.querySelector(".left-wrapper .img-wrapper img").src = reader.result;
         employeeFormDetails.image = reader.result;
     };
-    reader.onerror = function () { return alert("Please upload the image again!"); };
+    reader.onerror = () => alert("Please upload the image again!");
 }
 ;
 //on submitting data form reset
@@ -36,20 +36,18 @@ function resetForm() {
     mode == "edit" ? window.location.reload() : "";
     document.querySelector("#employeeForm").reset();
     document.querySelector(".left-wrapper .img-wrapper img").src = employeeFormDetails.image;
-    for (var _i = 0, requiredFields_1 = requiredFields; _i < requiredFields_1.length; _i++) {
-        var field = requiredFields_1[_i];
-        var spanElement = document.querySelector("span[name=\"".concat(field, "\"]"));
+    for (let field of requiredFields) {
+        let spanElement = document.querySelector(`span[name="${field}"]`);
         spanElement ? spanElement.removeAttribute('error') : "";
     }
 }
 // form submit
-var requiredFields = ["empno", "email", "firstname", "lastname", "joiningDate"];
-document.querySelector(".form-add-employee").addEventListener("click", function (e) {
+let requiredFields = ["empno", "email", "firstname", "lastname", "joiningDate"];
+document.querySelector(".form-add-employee").addEventListener("click", (e) => {
     e.preventDefault();
-    var isValid = false;
-    for (var _i = 0, requiredFields_2 = requiredFields; _i < requiredFields_2.length; _i++) {
-        var field = requiredFields_2[_i];
-        var ele = document.querySelector('span#' + field);
+    let isValid = false;
+    for (let field of requiredFields) {
+        let ele = document.querySelector('span#' + field);
         !employeeFormDetails[field] ? ele.setAttribute('error', '') : ele.removeAttribute('error');
         if (!employeeFormDetails[field])
             isValid = true;
@@ -59,7 +57,7 @@ document.querySelector(".form-add-employee").addEventListener("click", function 
     isValid = validation.validateForm(employeeFormDetails, mode);
     if (!isValid)
         return;
-    var employee = new models.Employee(employeeFormDetails);
+    let employee = new models.Employee(employeeFormDetails);
     employeeServices.saveEmployee(employee, mode == "edit" ? "update" : "create");
     employeeFormDetails = {
         image: "../assests/images/user-profile.jpg",
@@ -78,7 +76,7 @@ document.querySelector(".form-add-employee").addEventListener("click", function 
         assignProject: ""
     };
     toastToggle(mode != "edit" ? "Employee Added Successfully" : "Updated Successfully");
-    setTimeout(function () {
+    setTimeout(() => {
         toastToggle("");
         resetForm();
         mode == "edit" ? (window.location.href = 'employee.html?id=' + empId + '&mode=view') : "";
@@ -92,20 +90,20 @@ function toastToggle(message) {
 //displayDataIntoInput
 function displayDataIntoInput(employee, mode) {
     document.querySelector(".left-wrapper .img-wrapper img").src = employee.image;
-    document.querySelector("label[for=\"file\"]").style.display = mode == 'edit' ? '' : "none";
-    document.querySelector("label[for=\"file\"] img").src = mode == 'edit' ? "../assests/images/file-pen.svg" : "none";
+    document.querySelector(`label[for="file"]`).style.display = mode == 'edit' ? '' : "none";
+    document.querySelector(`label[for="file"] img`).src = mode == 'edit' ? "../assests/images/file-pen.svg" : "none";
     document.querySelector(".employee-details > .title").innerText = mode + " Employee";
-    for (var key in employee)
-        key != "status" && key != "image" ? document.getElementsByName("".concat(key == 'role' ? 'jobTitle' : key))[0].value = employee[key] : "";
+    for (let key in employee)
+        key != "status" && key != "image" ? document.getElementsByName(`${key == 'role' ? 'jobTitle' : key}`)[0].value = employee[key] : "";
 }
 // edit/ update the employee data
 function editPage(id) {
-    var editEmployee = employeeServices.getEmployeeById(id);
+    let editEmployee = employeeServices.getEmployeeById(id);
     !editEmployee ? window.location.href = "index.html" : "";
     employeeFormDetails = editEmployee;
     document.querySelector(".employment-information .btn-wrapper .add-employee button").innerHTML = 'Update';
     displayDataIntoInput(editEmployee, "edit");
-    (document.querySelector("input[name=\"empno\"]")).disabled = true;
+    (document.querySelector(`input[name="empno"]`)).disabled = true;
 }
 // redirecting view page to edit page
 function editEmployee(event, id) {
@@ -120,18 +118,17 @@ function deleteEmployeeUsingId(event, id) {
 }
 // view the employee in add employee page
 function viewPage(id) {
-    var viewEmployee = employeeServices.getEmployeeById(id);
+    let viewEmployee = employeeServices.getEmployeeById(id);
     !viewEmployee ? window.location.href = "index.html" : '';
-    document.querySelector("#editOrDelete").innerHTML += "<button class=\"edit\" onclick=\"editEmployee(event,".concat(id, ")\">Edit</button>  <button class=\"delete\" onclick = \"deleteEmployeeUsingId(event,").concat(id, ")\" > Delete</button> ");
+    document.querySelector("#editOrDelete").innerHTML += `<button class="edit" onclick="editEmployee(event,${id})">Edit</button>  <button class="delete" onclick = "deleteEmployeeUsingId(event,${id})" > Delete</button> `;
     displayDataIntoInput(viewEmployee, 'View');
-    Array.from(document.querySelector('#employeeForm').elements).forEach(function (ele) { return ele.disabled = true; });
+    Array.from(document.querySelector('#employeeForm').elements).forEach((ele) => ele.disabled = true);
     document.querySelector(".employment-information .btn-wrapper").style.display = "none";
 }
 //getting mode and employee id if it exists
 function getModeandId() {
-    var _a;
-    var URL = window.location.search.slice(1);
-    _a = URL ? URL.split('&') : ["", ""], empId = _a[0], mode = _a[1];
+    let URL = window.location.search.slice(1);
+    [empId, mode] = URL ? URL.split('&') : ["", ""];
     empId = empId ? empId.slice(3) : "";
     mode = mode ? mode.slice(5) : "";
     ((mode == "view" || mode == "edit") && !empId) ? window.location.href = "index.html" : "";

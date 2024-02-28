@@ -1,4 +1,4 @@
-var Constants = {
+let Constants = {
   Employeetableheader: `<tr>
     <td>
       <div class="table-check-box"><input type="checkbox" onchange="employeeCheckBox(this)"/></div>

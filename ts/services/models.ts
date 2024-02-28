@@ -51,4 +51,4 @@ class Role {
     }
 }
 
-var models = { Employee, Role }
+let models = { Employee, Role }

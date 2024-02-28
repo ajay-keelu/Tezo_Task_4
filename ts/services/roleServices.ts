@@ -16,4 +16,4 @@ function generateId(): string {
     let date: Date = new Date()
     return `${date.getDay()}${date.getMonth()}${date.getFullYear()}${date.getHours()}${date.getMinutes()}${date.getMilliseconds()}`;
 }
-var roleServices = { setRoles, getRoles, getRoleById, updateRole, generateId }
+let roleServices = { setRoles, getRoles, getRoleById, updateRole, generateId }

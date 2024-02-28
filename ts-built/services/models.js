@@ -1,5 +1,5 @@
-var Employee = /** @class */ (function () {
-    function Employee(employee) {
+class Employee {
+    constructor(employee) {
         this.image = employee.image;
         this.firstname = employee.firstname;
         this.lastname = employee.lastname;
@@ -15,10 +15,9 @@ var Employee = /** @class */ (function () {
         this.assignManager = employee.assignManager;
         this.assignProject = employee.assignProject;
     }
-    return Employee;
-}());
-var Role = /** @class */ (function () {
-    function Role(role) {
+}
+class Role {
+    constructor(role) {
         this.roleName = role.roleName;
         this.department = role.department;
         this.description = role.description;
@@ -26,6 +25,5 @@ var Role = /** @class */ (function () {
         this.id = role.id;
         this.employeesAssigned = role.employeesAssigned;
     }
-    return Role;
-}());
-var models = { Employee: Employee, Role: Role };
+}
+let models = { Employee, Role };

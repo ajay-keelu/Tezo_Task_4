@@ -1,8 +1,195 @@
-var Constants = {
-    Employeetableheader: "<tr>\n    <td>\n      <div class=\"table-check-box\"><input type=\"checkbox\" onchange=\"employeeCheckBox(this)\"/></div>\n    </td>\n    <td>\n      <div class=\"head-user header\">\n        <span>user</span>\n        <div class=\"icons\">\n          <img id=\"up\" src=\"../assests/images/chevron-up.svg\" onclick=\"sortData('name','asec','.head-user #up')\" class=\"fa table-icon\">\n          <img id=\"down\" src=\"../assests/images/chevron-down.svg\" onclick=\"sortData('name','desc','.head-user #down')\" class=\"fa table-icon\" alt=\"down-arrow\"/>\n        </div>\n      </div>\n    </td>\n    <td>\n      <div class=\"head-location header\">\n        <span>location</span>\n        <div class=\"icons\">\n          <img id=\"up\" src=\"../assests/images/chevron-up.svg\" onclick=\"sortData('location','asec','.head-location #up')\"  class=\"fa table-icon\" alt=\"arrow-up\">\n          <img id=\"down\" src=\"../assests/images/chevron-down.svg\" onclick=\"sortData('location','desc','.head-location #down')\"  class=\"fa table-icon\" alt=\"down-arrow\"/>\n        </div>\n      </div>\n    </td>\n    <td>\n      <div class=\"head-department header\">\n        <span>department</span>\n        <div class=\"icons\">\n          <img id=\"up\" src=\"../assests/images/chevron-up.svg\" onclick=\"sortData('department','asec','.head-department #up')\"  class=\"fa table-icon\" alt=\"arrow-up\">\n          <img id=\"down\" src=\"../assests/images/chevron-down.svg\" onclick=\"sortData('department','desc','.head-department #down')\"  class=\"fa table-icon\" alt=\"down-arrow\"/>\n        </div>\n      </div>\n    </td>\n    <td>\n      <div class=\"head-role header\">\n        <span>role</span>\n        <div class=\"icons\">\n          <img id=\"up\" src=\"../assests/images/chevron-up.svg\" onclick=\"sortData('jobTitle','asec','.head-role #up')\"  class=\"fa table-icon\" alt=\"arrow-up\">\n          <img id=\"down\" src=\"../assests/images/chevron-down.svg\" onclick=\"sortData('jobTitle','desc','.head-role #down')\"  class=\"fa table-icon\" alt=\"down-arrow\"/>\n        </div>\n      </div>\n    </td>\n    <td>\n      <div class=\"head-emp-no header\">\n        <span>emp&nbsp;no</span>\n        <div class=\"icons\">\n          <img id=\"up\" src=\"../assests/images/chevron-up.svg\" onclick=\"sortData('empno','asec','.head-emp-no #up')\"  class=\"fa table-icon\" alt=\"arrow-up\">\n          <img id=\"down\" src=\"../assests/images/chevron-down.svg\" onclick=\"sortData('empno','desc','.head-emp-no #down')\"  class=\"fa table-icon\" alt=\"down-arrow\"/>\n        </div>\n      </div>\n    </td>\n    <td>\n      <div class=\"head-status header\">\n        <span>status</span>\n        <div class=\"icons\">\n          <img id=\"up\" src=\"../assests/images/chevron-up.svg\" onclick=\"sortData('status','asec','.head-status #up')\"  class=\"fa table-icon\" alt=\"arrow-up\">\n          <img id=\"down\" src=\"../assests/images/chevron-down.svg\" onclick=\"sortData('status','desc','.head-status #down')\"  class=\"fa table-icon\" alt=\"down-arrow\"/>\n        </div>\n      </div>\n    </td>\n    <td>\n      <div class=\"head-join-date header\">\n        <span>join&nbsp;dt</span>\n        <div class=\"icons\">\n          <img id=\"up\" src=\"../assests/images/chevron-up.svg\" onclick=\"sortData('joiningDate','asec','.head-join-date #up')\"  class=\"fa table-icon\" alt=\"arrow-up\">\n          <img id=\"down\" src=\"../assests/images/chevron-down.svg\" onclick=\"sortData('joiningDate','desc','.head-join-date #down')\"  class=\"fa table-icon\" alt=\"down-arrow\"/>\n        </div>\n      </div>\n    </td>\n    <td>\n      <div class=\"user-modification\">\n        <i> <img src=\"../assests/images/ellipsis.svg\" class=\"fa-solid fa-ellipsis\" /></i>\n      </div>\n    </td>\n  </tr>",
-    EmployeeRow: "<tr>\n  <td>\n    <div class=\"table-check-box\">\n      <input type=\"checkbox\" class=\"table-checkbox\" id=\"{{employeeNumber}}\" onchange=\"employeeCheckBox()\" {{checked}} />\n    </div>\n  </td>\n  <td>\n    <div class=\"user-profile-card\">\n      <div class=\"profile-img\">\n        <img src=\"{{image}}\" alt=\"user-profile\" height=\"30px\"/>\n      </div>\n      <div class=\"profile-description\">\n        <div class=\"name\">{{firstname}} {{lastname}}</div>\n        <div class=\"email\">{{email}}</div>\n      </div>\n    </div>\n  </td>\n  <td>{{location}}</td>\n  <td>{{department}}</td>\n  <td>{{role}}</td>\n  <td>{{employeeNumber}}</td>\n  <td>\n    <button class=\"active\" style=\"text-transform:capitalize\" title=\"status\">{{status}}</button>\n  </td>\n  <td>{{joiningDate}}</td>\n    <td class=\"view-edit\">\n      <button onclick=\"popUpDisplay(this)\" onblur=\"hidePopUp(this)\">\n          <i style=\"padding:0px 8px\"><img src=\"../assests/images/ellipsis.svg\" class=\"fa-solid fa-ellipsis\" /></i>\n          <div>\n            <span onclick=\"viewOrEditEmployee({{employeeNumber}},'view')\">View&nbsp;Details </span>\n            <span onclick=\"viewOrEditEmployee({{employeeNumber}},'edit')\">Edit </span>\n            <span onclick=\"deleteEmployee({{employeeNumber}})\">Delete</span>\n          </div>\n      </button>\n    </td>\n</tr>",
-    roleCard: "<div class=\"roles-description\">\n<div class=\"roles-heading\">\n  <h3>{{roleName}}</h3>\n  <img src=\"../assests/images/edit.svg\" alt=\"edit\" onclick=\"redirectingToEditRole({{roleId}})\" />\n</div>\n<div class=\"role-information\">\n  <div class=\"role-item\">\n    <div class=\"left-item\">\n      <img src=\"../assests/images/employees-black.svg\" alt=\"employee\" />Department\n    </div>\n    <div class=\"right-item\">{{roleDepartment}}</div>\n  </div>\n  <div class=\"role-item\">\n    <div class=\"left-item\">\n      <img src=\"../assests/images/location.svg\" alt=\"location\" />Location\n    </div>\n    <div class=\"right-item\">{{roleLocation}}</div>\n  </div>\n  <div class=\"role-item\">\n    <div class=\"left-item\">Total Employees</div>\n    <div class=\"right-item\">\n      <div class=\"image-container\">\n            {{roleCardImageContainer}}\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"view-more-employees\">\n    <div class=\"view\">\n        <button onclick=\"redirectToEmployees({{roleId}})\">View all Employees</button>\n        <img src=\"../assests/images/right-arrow.svg\" alt=\"right-arrow\" />\n    </div>\n</div>\n</div >",
-    EmployeeCardDropdown: "<label for=\"emp{{empId}}\" class=\"employee-card\">\n<div  class=\"profile\">\n  <div class=\"profile-image\">\n    <img src=\"{{image}}\" width=\"23px\" alt=\"profile\" />\n  </div>\n  <div class=\"name\">{{firstname}} {{lastname}}</div>\n</div>\n<input type=\"checkbox\" onchange=\"assignEmployeesToRole({{empId}})\" id=\"emp{{empId}}\" {{checked}} />\n</label>",
-    EmployeeBubble: "<div class=\"employee-card\">\n<div>\n  <img src=\"{{image}}\" alt=\"profile\" />\n  <div class=\"name\">{{firstname}}</div>\n</div>\n<button onclick=\"removeFromEmployeeBubble({{empId}})\">x</button>\n</div>",
-    roleDetailsEmployeeCard: "<div class=\"role-profile-card\">\n<div class=\"role-profile\">\n  <div class=\"role-image\">\n    <img src=\"{{image}}\" alt=\"profile\" height=\"30px\" />\n  </div>\n  <div class=\"role-profile-description\">\n    <div class=\"name\">{{firstname}} {{lastname}}</div>\n    <div class=\"sub-line\">Head of Product Design</div>\n  </div>\n</div>\n<div class=\"profile-information\">\n  <div>\n    <img src=\"../assests/images/address-card.svg\" alt=\"address-card\" />\n    <span>{{empno}}</span>\n  </div>\n  <div>\n    <img src=\"../assests/images/email.svg\" alt=\"email\" />\n    <span>{{email}}</span>\n  </div>\n  <div>\n    <img src=\"../assests/images/employees-black.svg\" alt=\"technology\" />\n    <span>{{department}}</span>\n  </div>\n  <div>\n    <img src=\"../assests/images/location.svg\" alt=\"location\" />\n    <span>{{location}}</span>\n  </div>\n</div>\n<div class=\"view-more\">\n  <div class=\"view\">\n    <span>View</span><img src=\"../assests/images/right-arrow.svg\" alt=\"right-arrow\" />\n  </div>\n</div>\n</div>"
+let Constants = {
+    Employeetableheader: `<tr>
+    <td>
+      <div class="table-check-box"><input type="checkbox" onchange="employeeCheckBox(this)"/></div>
+    </td>
+    <td>
+      <div class="head-user header">
+        <span>user</span>
+        <div class="icons">
+          <img id="up" src="../assests/images/chevron-up.svg" onclick="sortData('name','asec','.head-user #up')" class="fa table-icon">
+          <img id="down" src="../assests/images/chevron-down.svg" onclick="sortData('name','desc','.head-user #down')" class="fa table-icon" alt="down-arrow"/>
+        </div>
+      </div>
+    </td>
+    <td>
+      <div class="head-location header">
+        <span>location</span>
+        <div class="icons">
+          <img id="up" src="../assests/images/chevron-up.svg" onclick="sortData('location','asec','.head-location #up')"  class="fa table-icon" alt="arrow-up">
+          <img id="down" src="../assests/images/chevron-down.svg" onclick="sortData('location','desc','.head-location #down')"  class="fa table-icon" alt="down-arrow"/>
+        </div>
+      </div>
+    </td>
+    <td>
+      <div class="head-department header">
+        <span>department</span>
+        <div class="icons">
+          <img id="up" src="../assests/images/chevron-up.svg" onclick="sortData('department','asec','.head-department #up')"  class="fa table-icon" alt="arrow-up">
+          <img id="down" src="../assests/images/chevron-down.svg" onclick="sortData('department','desc','.head-department #down')"  class="fa table-icon" alt="down-arrow"/>
+        </div>
+      </div>
+    </td>
+    <td>
+      <div class="head-role header">
+        <span>role</span>
+        <div class="icons">
+          <img id="up" src="../assests/images/chevron-up.svg" onclick="sortData('jobTitle','asec','.head-role #up')"  class="fa table-icon" alt="arrow-up">
+          <img id="down" src="../assests/images/chevron-down.svg" onclick="sortData('jobTitle','desc','.head-role #down')"  class="fa table-icon" alt="down-arrow"/>
+        </div>
+      </div>
+    </td>
+    <td>
+      <div class="head-emp-no header">
+        <span>emp&nbsp;no</span>
+        <div class="icons">
+          <img id="up" src="../assests/images/chevron-up.svg" onclick="sortData('empno','asec','.head-emp-no #up')"  class="fa table-icon" alt="arrow-up">
+          <img id="down" src="../assests/images/chevron-down.svg" onclick="sortData('empno','desc','.head-emp-no #down')"  class="fa table-icon" alt="down-arrow"/>
+        </div>
+      </div>
+    </td>
+    <td>
+      <div class="head-status header">
+        <span>status</span>
+        <div class="icons">
+          <img id="up" src="../assests/images/chevron-up.svg" onclick="sortData('status','asec','.head-status #up')"  class="fa table-icon" alt="arrow-up">
+          <img id="down" src="../assests/images/chevron-down.svg" onclick="sortData('status','desc','.head-status #down')"  class="fa table-icon" alt="down-arrow"/>
+        </div>
+      </div>
+    </td>
+    <td>
+      <div class="head-join-date header">
+        <span>join&nbsp;dt</span>
+        <div class="icons">
+          <img id="up" src="../assests/images/chevron-up.svg" onclick="sortData('joiningDate','asec','.head-join-date #up')"  class="fa table-icon" alt="arrow-up">
+          <img id="down" src="../assests/images/chevron-down.svg" onclick="sortData('joiningDate','desc','.head-join-date #down')"  class="fa table-icon" alt="down-arrow"/>
+        </div>
+      </div>
+    </td>
+    <td>
+      <div class="user-modification">
+        <i> <img src="../assests/images/ellipsis.svg" class="fa-solid fa-ellipsis" /></i>
+      </div>
+    </td>
+  </tr>`,
+    EmployeeRow: `<tr>
+  <td>
+    <div class="table-check-box">
+      <input type="checkbox" class="table-checkbox" id="{{employeeNumber}}" onchange="employeeCheckBox()" {{checked}} />
+    </div>
+  </td>
+  <td>
+    <div class="user-profile-card">
+      <div class="profile-img">
+        <img src="{{image}}" alt="user-profile" height="30px"/>
+      </div>
+      <div class="profile-description">
+        <div class="name">{{firstname}} {{lastname}}</div>
+        <div class="email">{{email}}</div>
+      </div>
+    </div>
+  </td>
+  <td>{{location}}</td>
+  <td>{{department}}</td>
+  <td>{{role}}</td>
+  <td>{{employeeNumber}}</td>
+  <td>
+    <button class="active" style="text-transform:capitalize" title="status">{{status}}</button>
+  </td>
+  <td>{{joiningDate}}</td>
+    <td class="view-edit">
+      <button onclick="popUpDisplay(this)" onblur="hidePopUp(this)">
+          <i style="padding:0px 8px"><img src="../assests/images/ellipsis.svg" class="fa-solid fa-ellipsis" /></i>
+          <div>
+            <span onclick="viewOrEditEmployee({{employeeNumber}},'view')">View&nbsp;Details </span>
+            <span onclick="viewOrEditEmployee({{employeeNumber}},'edit')">Edit </span>
+            <span onclick="deleteEmployee({{employeeNumber}})">Delete</span>
+          </div>
+      </button>
+    </td>
+</tr>`,
+    roleCard: `<div class="roles-description">
+<div class="roles-heading">
+  <h3>{{roleName}}</h3>
+  <img src="../assests/images/edit.svg" alt="edit" onclick="redirectingToEditRole({{roleId}})" />
+</div>
+<div class="role-information">
+  <div class="role-item">
+    <div class="left-item">
+      <img src="../assests/images/employees-black.svg" alt="employee" />Department
+    </div>
+    <div class="right-item">{{roleDepartment}}</div>
+  </div>
+  <div class="role-item">
+    <div class="left-item">
+      <img src="../assests/images/location.svg" alt="location" />Location
+    </div>
+    <div class="right-item">{{roleLocation}}</div>
+  </div>
+  <div class="role-item">
+    <div class="left-item">Total Employees</div>
+    <div class="right-item">
+      <div class="image-container">
+            {{roleCardImageContainer}}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="view-more-employees">
+    <div class="view">
+        <button onclick="redirectToEmployees({{roleId}})">View all Employees</button>
+        <img src="../assests/images/right-arrow.svg" alt="right-arrow" />
+    </div>
+</div>
+</div >`,
+    EmployeeCardDropdown: `<label for="emp{{empId}}" class="employee-card">
+<div  class="profile">
+  <div class="profile-image">
+    <img src="{{image}}" width="23px" alt="profile" />
+  </div>
+  <div class="name">{{firstname}} {{lastname}}</div>
+</div>
+<input type="checkbox" onchange="assignEmployeesToRole({{empId}})" id="emp{{empId}}" {{checked}} />
+</label>`,
+    EmployeeBubble: `<div class="employee-card">
+<div>
+  <img src="{{image}}" alt="profile" />
+  <div class="name">{{firstname}}</div>
+</div>
+<button onclick="removeFromEmployeeBubble({{empId}})">x</button>
+</div>`,
+    roleDetailsEmployeeCard: `<div class="role-profile-card">
+<div class="role-profile">
+  <div class="role-image">
+    <img src="{{image}}" alt="profile" height="30px" />
+  </div>
+  <div class="role-profile-description">
+    <div class="name">{{firstname}} {{lastname}}</div>
+    <div class="sub-line">Head of Product Design</div>
+  </div>
+</div>
+<div class="profile-information">
+  <div>
+    <img src="../assests/images/address-card.svg" alt="address-card" />
+    <span>{{empno}}</span>
+  </div>
+  <div>
+    <img src="../assests/images/email.svg" alt="email" />
+    <span>{{email}}</span>
+  </div>
+  <div>
+    <img src="../assests/images/employees-black.svg" alt="technology" />
+    <span>{{department}}</span>
+  </div>
+  <div>
+    <img src="../assests/images/location.svg" alt="location" />
+    <span>{{location}}</span>
+  </div>
+</div>
+<div class="view-more">
+  <div class="view">
+    <span>View</span><img src="../assests/images/right-arrow.svg" alt="right-arrow" />
+  </div>
+</div>
+</div>`
 };

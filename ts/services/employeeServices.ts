@@ -31,4 +31,4 @@ function saveEmployee(employee: Employee, mode: string): void {
     mode == 'update' ? updateEmployee(employee) : addEmployee(employee)
 }
 
-var employeeServices = { getAllEmployees, getEmployeeById, saveEmployee, deleteEmployeeById }
+let employeeServices = { getAllEmployees, getEmployeeById, saveEmployee, deleteEmployeeById }
