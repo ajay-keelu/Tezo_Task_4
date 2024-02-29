@@ -17,7 +17,7 @@ var employeeFormDetails = {
 };
 // on form input changes invoking the function
 function onFormInputChange(value, name) {
-    employeeFormDetails[name] = value;
+    employeeFormDetails[name] = value.trim();
 }
 ;
 //reading the image file
@@ -57,6 +57,7 @@ document.querySelector(".form-add-employee").addEventListener("click", (e) => {
     isValid = validation.validateForm(employeeFormDetails, mode);
     if (!isValid)
         return;
+    employeeFormDetails["empno"] = `${parseInt(employeeFormDetails.empno)}`;
     let employee = new models.Employee(employeeFormDetails);
     employeeServices.saveEmployee(employee, mode == "edit" ? "update" : "create");
     employeeFormDetails = {

@@ -24,6 +24,7 @@ function validateFirstname(name) {
 //validating the empno
 function validateEmployeeNumber(empno) {
     let spanElement = document.querySelector(`span#empno`);
+    empno = `${parseInt(empno)}`;
     let employee = employeeServices.getEmployeeById(empno);
     if (employee) {
         spanElement.innerHTML = '<b class="exclamation"><b>!</b></b> employee number already exists';
