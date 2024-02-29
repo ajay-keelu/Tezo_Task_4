@@ -16,7 +16,7 @@ class Employee {
     public isCheckedRole?: boolean
     public isDelete?: boolean
 
-    constructor(employee: { image: string, firstname: string, lastname: string, email: string, empno: string, location: string, mobile: string, dob: string, department: string, status: string, jobTitle: string, joiningDate: string, assignManager: string, assignProject: string }) {
+    constructor(employee: Employee) {
         this.image = employee.image
         this.firstname = employee.firstname;
         this.lastname = employee.lastname;
@@ -41,7 +41,7 @@ class Role {
     public location: string
     public id: string
     public employeesAssigned: Employee[]
-    constructor(role: { roleName: string, department: string, description: string, location: string, employeesAssigned: Employee[], id: string }) {
+    constructor(role: Role) {
         this.roleName = role.roleName
         this.department = role.department
         this.description = role.description

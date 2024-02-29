@@ -1,4 +1,9 @@
 {
+    "name": "task-4",
+    "description": "task 4 using typescript",
+    "version": "1.0.0",
+    "author": "Ajay",
+    "license": "ISC",
     "scripts": {
         "start": "tsc -watch"
     }

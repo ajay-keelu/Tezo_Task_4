@@ -1,22 +1,4 @@
 let empId: string, mode: string;
-interface Employee {
-    image: string,
-    firstname: string,
-    lastname: string,
-    email: string,
-    empno: string,
-    location: string,
-    mobile: string,
-    dob: string,
-    department: string,
-    status: string,
-    jobTitle: string,
-    joiningDate: string,
-    assignManager: string,
-    assignProject: string,
-    isCheckedRole?: boolean,
-    isDelete?: boolean
-}
 var employeeFormDetails: Employee = {
     image: "../assests/images/user-profile.jpg",
     firstname: "",

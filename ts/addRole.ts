@@ -1,13 +1,5 @@
 var inputEmployeeSearch: HTMLInputElement | null = document.querySelector('.assign-employees input[name="employeeSearch"]');
 let Employees: Employee[];
-interface Role {
-    roleName: string,
-    department: string,
-    description: string,
-    location: string,
-    id: string,
-    employeesAssigned: Employee[]
-}
 var currentRoleDetails: Role = {
     roleName: '',
     department: '',
