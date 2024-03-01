@@ -1,0 +1,182 @@
+.roles-items {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 26px;
+  height: 60vh;
+  overflow: hidden;
+  overflow-y: scroll;
+  padding-bottom: 60px;
+}
+
+.roles-items::-webkit-scrollbar,
+.roles-items::-webkit-scrollbar:horizontal {
+  width: 3px;
+  height: 3px;
+}
+
+.roles-items::-webkit-scrollbar-track,
+.roles-items::-webkit-scrollbar-track:horizontal {
+  display: none;
+}
+
+.roles-items::-webkit-scrollbar-thumb,
+.roles-items::-webkit-scrollbar-thumb:horizontal {
+  background-color: #ff9f9f;
+  border-radius: 3px;
+}
+
+.main-content .scroll-item {
+  width: 100%;
+  padding: 0 20px;
+}
+
+.roles-description {
+  border: 1px solid lightgrey;
+  padding: 25px 20px;
+  width: 309px;
+  background: #ffffff;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.roles-description:hover {
+  border: 1px solid rgb(118, 118, 118);
+  box-shadow: 0px 8px 12px 5px rgba(179, 178, 178, 0.276);
+}
+
+.roles-description .roles-heading {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.roles-description .roles-heading h3 {
+  font-weight: 900;
+  font-size: 15px;
+}
+
+.roles-description .roles-heading img {
+  cursor: pointer;
+}
+
+.filter-bar form {
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+
+.roles-description .role-information {
+  width: 100%;
+  padding: 18px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.role-information .role-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.role-item .left-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #455573;
+  font-size: 13px;
+}
+
+.role-item .right-item {
+  font-size: 13px;
+  color: #455573;
+}
+
+.role-item .right-item .image-container {
+  position: relative;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.role-item .right-item .image-container .top {
+  position: absolute;
+  height: 19px;
+  width: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 25px;
+  font-size: 8px;
+  font-weight: 900;
+  border: 1.5px solid #fff;
+}
+
+.role-item .right-item .image-container .top:nth-child(1) {
+  z-index: 5;
+  background: #ffffff;
+  right: 0;
+  overflow: hidden;
+}
+
+.role-item .right-item .image-container .top:nth-child(2) {
+  right: 9px;
+  overflow: hidden;
+  z-index: 4;
+}
+
+.role-item .right-item .image-container .top:nth-child(3) {
+  overflow: hidden;
+  right: 18px;
+  z-index: 3;
+}
+
+.role-item .right-item .image-container .top:nth-child(4) {
+  right: 27px;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.role-item .right-item .image-container .top:nth-child(5) {
+  right: 36px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.roles-description .view-more-employees {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 12px;
+}
+
+.view-more-employees img {
+  width: 14px;
+  transition: all 0.3s ease-in-out;
+}
+
+.view-more-employees .view:hover img {
+  transform: translateX(8px);
+}
+
+.view-more-employees .view {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.view-more-employees .view button {
+  color: #4c4c4c;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+}

@@ -1,0 +1,323 @@
+.employee-details {
+  padding: 15px 90px 15px 20px;
+  width: 100%;
+  min-height: 90%;
+}
+
+.employee-details>.title {
+  color: #1a1a1a;
+  padding: 10px;
+  font-weight: 700;
+}
+
+.employee-details .personal-information {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  height: 100%;
+}
+
+.personal-information .left-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px 0;
+  height: 100%;
+  width: 12%;
+  position: relative;
+}
+
+.personal-information .left-wrapper label {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+}
+
+.personal-information .left-wrapper .img-wrapper:hover label {
+  display: flex;
+}
+
+.personal-information .left-wrapper .img-wrapper:hover div {
+  left: 0;
+}
+
+.personal-information .left-wrapper input[type="file"] {
+  visibility: hidden;
+}
+
+.personal-information .left-wrapper .img-wrapper {
+  width: fit-content;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.personal-information .left-wrapper label div {
+  cursor: pointer;
+  padding: 6px 10px;
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff6d;
+  width: 180%;
+  animation: fade-in .3s ease-in-out;
+  aspect-ratio: 1;
+}
+
+@keyframes fade-in {
+  0% {
+    left: 200%;
+  }
+
+  100% {
+    left: 0;
+  }
+}
+
+.personal-information .left-wrapper label div img {
+  scale: .8;
+}
+
+.personal-information .right-wrapper {
+  width: 90%;
+}
+
+.right-wrapper .title {
+  color: #1a1a1a;
+  font-weight: 700;
+  padding: 10px 0 20px 0;
+  margin-top: 20px;
+}
+
+.input-form-element {
+  background: #fafbfc;
+  border: 2px solid #dfe1e6;
+  padding: 5px;
+  outline: none;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  color: #8993a6;
+  font-weight: 600;
+}
+
+.input-form-element:focus {
+  border: 2px solid #6cacff;
+}
+
+.input-form-element::placeholder {
+  color: #8993a6;
+}
+
+.employee-number {
+  display: flex;
+  flex-direction: column;
+}
+
+.employee {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 20px;
+  padding: 10px 0;
+}
+
+.employee .name {
+  display: flex;
+  flex-direction: column;
+}
+
+.employee .name input {
+  width: 240px;
+}
+
+.employee-number input {
+  width: 25%;
+}
+
+.employee-number label,
+.name label {
+  font-size: 12px;
+  color: #707580;
+  padding: 8px 0;
+  font-weight: 600;
+}
+
+.employment-information {
+  width: 100%;
+}
+
+.employment-information .details {
+  display: flex;
+  gap: 20px;
+  padding: 10px 0;
+}
+
+.employment-information .details .input-form {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-form label {
+  font-size: 14px;
+  color: #707580;
+  padding: 5px 0;
+}
+
+.employment-information .btn-wrapper {
+  width: 100%;
+  display: flex;
+  padding: 40px 60px 40px 0;
+  justify-content: flex-end;
+  gap: 40px;
+}
+
+.employment-information .btn-wrapper .cancel button {
+  background: #fbebeb;
+  color: #f55a5a;
+  border: none;
+  outline: none;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+.employment-information .btn-wrapper .add-employee button {
+  border: none;
+  outline: none;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 4px;
+  background: #f44848;
+  color: #ffffff;
+}
+
+#editOrDelete .delete {
+  border: none;
+  outline: none;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 5px 12px;
+  border-radius: 4px;
+  background: #f44848;
+  color: #ffffff;
+  margin: 0 10px;
+}
+
+#editOrDelete .edit {
+  border: none;
+  outline: none;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 5px 12px;
+  border-radius: 4px;
+  background: #fce4e4;
+  color: #f44848;
+}
+
+.drop-down-arrow {
+  position: relative;
+}
+
+input[type="text"].input-form-element {
+  font-family: "Nunito sans", "FontAwesome", sans-serif;
+}
+
+.employee-details .name {
+  position: relative;
+}
+
+.employee-details .name input:has(+ span[error]) {
+  border-color: #de350b;
+}
+
+.employee-details .name span {
+  position: absolute;
+  bottom: -18px;
+  color: #de350b;
+  font-size: 10px;
+  display: none;
+  align-items: center;
+  gap: 5px;
+}
+
+.employee-details .name span[error] {
+  display: flex;
+}
+
+.exclamation {
+  background: #de350b;
+  font-size: 8px;
+  transform: rotate(-45deg);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 8px;
+  aspect-ratio: 1;
+  border-radius: 0.8px;
+}
+
+.exclamation b {
+  transform: rotate(45deg);
+  color: #ffffff;
+  font-size: 8px;
+}
+
+.toast {
+  position: fixed;
+  z-index: 1111;
+  top: 80px;
+  background: rgb(56, 165, 56);
+  color: #fff;
+  height: 60px;
+  right: -100%;
+  width: 300px;
+  border-radius: 5px;
+  transition: all 1s ease-in-out;
+  box-shadow: 0 8px 16px 3px rgba(211, 211, 211, 0.575);
+}
+
+.toast.toast-toggle {
+  right: 30px;
+}
+
+.toast .toast-success {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  gap: 10px;
+}
+
+.toast .toast-success img {
+  height: 45px;
+}
+
+.toast .toast-success button {
+  position: absolute;
+  right: 0;
+  background: rgb(49, 250, 89);
+  border: 1px solid rgb(13, 255, 0);
+  padding: 0px 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 20px;
+  top: 0;
+}
+
+.toast .toast-success i {
+  font-size: 35px;
+}
