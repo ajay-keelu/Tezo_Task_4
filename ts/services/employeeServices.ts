@@ -1,34 +1,52 @@
-function getAllEmployees(): Employee[] {
+function getEmployees(): Employee[] {
     return JSON.parse(localStorage.getItem("EmployeeData")) || [];
 }
 
-function setEmployeeData(data: Employee[]): void {
+function setEmployees(data: Employee[]): void {
     localStorage.setItem("EmployeeData", JSON.stringify(data));
 }
 
-function getEmployeeById(id: string): Employee {
-    return getAllEmployees().find((employee: Employee) => employee.empno == id);
+function getById(id: string): Employee {
+    return getEmployees().find((employee: Employee) => employee.empno == id);
 }
 
-function deleteEmployeeById(id: string): void {
-    setEmployeeData(getAllEmployees().filter(employee => employee.empno != id))
+function deleteById(id: string): void {
+    setEmployees(getEmployees().filter(employee => employee.empno != id))
 }
 
-function updateEmployee(employee: Employee): void {
-    let employees: Employee[] = getAllEmployees()
+function update(employee: Employee): void {
+    let employees: Employee[] = getEmployees()
     let index: number = employees.findIndex(ele => ele.empno == employee.empno)
     employees[index] = employee;
-    setEmployeeData(employees)
+    setEmployees(employees)
 }
 
-function addEmployee(employee: Employee): void {
-    let employees: Employee[] = getAllEmployees()
+function create(employee: Employee): void {
+    let employees: Employee[] = getEmployees()
     employees.push(employee)
-    setEmployeeData(employees)
+    setEmployees(employees)
 }
 
-function saveEmployee(employee: Employee, mode: string): void {
-    mode == 'update' ? updateEmployee(employee) : addEmployee(employee)
+function save(employee: Employee): void {
+    let emp = getById(employee.empno)
+    emp ? update(employee) : create(employee)
 }
 
-let employeeServices = { getAllEmployees, getEmployeeById, saveEmployee, deleteEmployeeById }
+
+function getLocations(): string[] {
+    let locations = new Set<string>()
+    getEmployees().forEach(employee => {
+        locations.add(employee.location)
+    })
+    return [...locations]
+}
+
+function getDepartments(): string[] {
+    let departments = new Set<string>()
+    getEmployees().forEach(employee => {
+        departments.add(employee.department)
+    })
+    return [...departments]
+}
+
+let employeeServices = { getEmployees, getById, getLocations, getDepartments, save, deleteById }

@@ -1,4 +1,4 @@
-function setRoles(data: Role[]):void {
+function setRoles(data: Role[]): void {
     localStorage.setItem("RolesData", JSON.stringify(data));
 }
 function getRoles(): Role[] {

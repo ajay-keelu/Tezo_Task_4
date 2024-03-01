@@ -1,20 +1,5 @@
 let empId, mode;
-var employeeFormDetails = {
-    image: "../assests/images/user-profile.jpg",
-    firstname: "",
-    lastname: "",
-    status: "Active",
-    email: "",
-    empno: "",
-    location: "",
-    mobile: "",
-    dob: "",
-    department: "",
-    jobTitle: "",
-    joiningDate: "",
-    assignManager: "",
-    assignProject: ""
-};
+var employeeFormDetails = Constants.defaultEmployeeDetails;
 // on form input changes invoking the function
 function onFormInputChange(value, name) {
     employeeFormDetails[name] = value.trim();
@@ -58,24 +43,9 @@ document.querySelector(".form-add-employee").addEventListener("click", (e) => {
     if (!isValid)
         return;
     employeeFormDetails["empno"] = `${parseInt(employeeFormDetails.empno)}`;
-    let employee = new models.Employee(employeeFormDetails);
-    employeeServices.saveEmployee(employee, mode == "edit" ? "update" : "create");
-    employeeFormDetails = {
-        image: "../assests/images/user-profile.jpg",
-        firstname: "",
-        lastname: "",
-        status: "Active",
-        email: "",
-        empno: "",
-        location: "",
-        mobile: "",
-        dob: "",
-        department: "",
-        jobTitle: "",
-        joiningDate: "",
-        assignManager: "",
-        assignProject: ""
-    };
+    let employee = new Employee(employeeFormDetails);
+    employeeServices.save(employee);
+    employeeFormDetails = Constants.defaultEmployeeDetails;
     toastToggle(mode != "edit" ? "Employee Added Successfully" : "Updated Successfully");
     setTimeout(() => {
         toastToggle("");
@@ -99,7 +69,7 @@ function displayDataIntoInput(employee, mode) {
 }
 // edit/ update the employee data
 function editPage(id) {
-    let editEmployee = employeeServices.getEmployeeById(id);
+    let editEmployee = employeeServices.getById(id);
     !editEmployee ? window.location.href = "index.html" : "";
     employeeFormDetails = editEmployee;
     document.querySelector(".employment-information .btn-wrapper .add-employee button").innerHTML = 'Update';
@@ -114,12 +84,12 @@ function editEmployee(event, id) {
 //deleting the employee
 function deleteEmployeeUsingId(event, id) {
     event.preventDefault();
-    employeeServices.deleteEmployeeById(id);
+    employeeServices.deleteById(id);
     window.location.href = 'index.html';
 }
 // view the employee in add employee page
 function viewPage(id) {
-    let viewEmployee = employeeServices.getEmployeeById(id);
+    let viewEmployee = employeeServices.getById(id);
     !viewEmployee ? window.location.href = "index.html" : '';
     document.querySelector("#editOrDelete").innerHTML += `<button class="edit" onclick="editEmployee(event,${id})">Edit</button>  <button class="delete" onclick = "deleteEmployeeUsingId(event,${id})" > Delete</button> `;
     displayDataIntoInput(viewEmployee, 'View');

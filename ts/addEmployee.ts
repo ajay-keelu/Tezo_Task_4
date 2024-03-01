@@ -1,21 +1,5 @@
 let empId: string, mode: string;
-var employeeFormDetails: Employee = {
-    image: "../assests/images/user-profile.jpg",
-    firstname: "",
-    lastname: "",
-    status: "Active",
-    email: "",
-    empno: "",
-    location: "",
-    mobile: "",
-    dob: "",
-    department: "",
-    jobTitle: "",
-    joiningDate: "",
-    assignManager: "",
-    assignProject: ""
-}
-
+var employeeFormDetails: Employee = Constants.defaultEmployeeDetails
 // on form input changes invoking the function
 function onFormInputChange(value: string, name: string): void {
     employeeFormDetails[name] = value.trim();
@@ -58,24 +42,9 @@ document.querySelector<HTMLButtonElement>(".form-add-employee").addEventListener
     isValid = validation.validateForm(employeeFormDetails, mode)
     if (!isValid) return
     employeeFormDetails["empno"] = `${parseInt(employeeFormDetails.empno)}`;
-    let employee: Employee = new models.Employee(employeeFormDetails);
-    employeeServices.saveEmployee(employee, mode == "edit" ? "update" : "create")
-    employeeFormDetails = {
-        image: "../assests/images/user-profile.jpg",
-        firstname: "",
-        lastname: "",
-        status: "Active",
-        email: "",
-        empno: "",
-        location: "",
-        mobile: "",
-        dob: "",
-        department: "",
-        jobTitle: "",
-        joiningDate: "",
-        assignManager: "",
-        assignProject: ""
-    }
+    let employee: Employee = new Employee(employeeFormDetails);
+    employeeServices.save(employee)
+    employeeFormDetails = Constants.defaultEmployeeDetails
     toastToggle(mode != "edit" ? "Employee Added Successfully" : "Updated Successfully");
     setTimeout(() => {
         toastToggle("");
@@ -102,7 +71,7 @@ function displayDataIntoInput(employee: Employee, mode: string): void {
 
 // edit/ update the employee data
 function editPage(id: string): void {
-    let editEmployee: Employee = employeeServices.getEmployeeById(id);
+    let editEmployee: Employee = employeeServices.getById(id);
     !editEmployee ? window.location.href = "index.html" : "";
     employeeFormDetails = editEmployee;
     document.querySelector<HTMLButtonElement>(".employment-information .btn-wrapper .add-employee button").innerHTML = 'Update'
@@ -119,13 +88,13 @@ function editEmployee(event: Event, id: string): void {
 //deleting the employee
 function deleteEmployeeUsingId(event: Event, id: string): void {
     event.preventDefault()
-    employeeServices.deleteEmployeeById(id)
+    employeeServices.deleteById(id)
     window.location.href = 'index.html'
 }
 
 // view the employee in add employee page
 function viewPage(id: string): void {
-    let viewEmployee: Employee = employeeServices.getEmployeeById(id);
+    let viewEmployee: Employee = employeeServices.getById(id);
     !viewEmployee ? window.location.href = "index.html" : '';
     document.querySelector<HTMLDivElement>("#editOrDelete").innerHTML += `<button class="edit" onclick="editEmployee(event,${id})">Edit</button>  <button class="delete" onclick = "deleteEmployeeUsingId(event,${id})" > Delete</button> `
     displayDataIntoInput(viewEmployee, 'View')

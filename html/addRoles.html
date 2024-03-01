@@ -181,7 +181,7 @@
           <div class="role-department">
             <div class="role-detail">
               <label>Role Name</label>
-              <input type="text" placeholder="Text" class="input-form-element" name="roleName"
+              <input type="text" placeholder="Text" class="input-form-element" name="name"
                 onchange="getRoleData(this.value,this.name)" />
               <span id="role">
                 <b class="exclamation"><b>!</b></b> <b style="text-transform:capitalize">Role name</b>
@@ -245,7 +245,8 @@
     </div>
   </div>
   <script src="../ts-built/constants/constants.js"></script>
-  <script src="../ts-built/services/models.js"></script>
+  <script src="../ts-built/models/Employees.js"></script>
+  <script src="../ts-built/models/Role.js"></script>
   <script src="../ts-built/services/roleServices.js"></script>
   <script src="../ts-built/services/employeeServices.js"></script>
   <script src="../ts-built/addRole.js"></script>

@@ -11,7 +11,7 @@ function displayRoles(roles: Role[]): void {
         let imageDivision: string = `<div class="top"><img src="{{employeeImage}}" height="20px" alt="profile" /></div>`
         let imageCardContainer: string = role.employeesAssigned?.length > 4 ? `<div class="top"> +${role.employeesAssigned.length - 4}</div>` : ""
         imageCardContainer += role.employeesAssigned.splice(0, 4).map(employee => imageDivision.replace('{{employeeImage}}', employee.image))
-        roleCardData = roleCardData.replaceAll("{{roleId}}", role.id).replace("{{roleName}}", role.roleName).replace("{{roleLocation}}", role.location).replace("{{roleDepartment}}", role.department).replace('{{roleCardImageContainer}}', imageCardContainer)
+        roleCardData = roleCardData.replaceAll("{{roleId}}", role.id).replace("{{roleName}}", role.name).replace("{{roleLocation}}", role.location).replace("{{roleDepartment}}", role.department).replace('{{roleCardImageContainer}}', imageCardContainer)
         innerData += roleCardData
     });
     let roleCards: HTMLDivElement | null = document.querySelector('.roles-items')

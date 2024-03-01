@@ -191,5 +191,35 @@ let Constants = {
     <span>View</span><img src="../assests/images/right-arrow.svg" alt="right-arrow" />
   </div>
 </div>
-</div>`
+</div>`,
+    defaultEmployeeDetails: {
+        image: "../assests/images/user-profile.jpg",
+        firstname: "",
+        lastname: "",
+        status: 1,
+        email: "",
+        empno: "",
+        location: "",
+        mobile: "",
+        dob: "",
+        department: "",
+        jobTitle: "",
+        joiningDate: "",
+        assignManager: "",
+        assignProject: ""
+    },
+    defaultRoleDetails: {
+        name: '',
+        department: '',
+        description: '',
+        location: '',
+        id: '',
+        employeesAssigned: []
+    },
+    selectedFilters: {
+        alphabet: '',
+        status: 0,
+        location: '',
+        department: ''
+    }
 };

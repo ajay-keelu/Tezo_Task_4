@@ -1,15 +1,8 @@
 var inputEmployeeSearch: HTMLInputElement | null = document.querySelector('.assign-employees input[name="employeeSearch"]');
 let Employees: Employee[];
-var currentRoleDetails: Role = {
-    roleName: '',
-    department: '',
-    description: '',
-    location: '',
-    id: '',
-    employeesAssigned: []
-}
+var currentRoleDetails: Role = Constants.defaultRoleDetails;
 let searchId: string = window.location.search.slice(4);
-searchId ? editRole(searchId) : Employees = employeeServices.getAllEmployees()
+searchId ? editRole(searchId) : Employees = employeeServices.getEmployees()
 
 //displaying the searchable data at the assign employees section
 function displayEmployeeCard(filterData: Employee[]): void {
@@ -46,13 +39,14 @@ document.querySelector<HTMLButtonElement>('#addrole').addEventListener('click', 
     }))
     if (isValid) return;
     currentRoleDetails["employeesAssigned"] = Employees.filter(employee => employee.isCheckedRole)
-    let roleData: Role = new models.Role(currentRoleDetails)
+    let roleData: Role = new Role(currentRoleDetails)
     let id: string = !searchId ? roleServices.generateId() : searchId;
     roleData.id = id;
     let rolesData: Role[] = roleServices.getRoles();
     searchId ? rolesData = roleServices.updateRole(rolesData, roleData) : rolesData.push(roleData);
     roleServices.setRoles(rolesData)
     toastToggleRole(searchId ? "Role Updated Successfully" : "Role Added Successfully");
+    currentRoleDetails = Constants.defaultRoleDetails
     setTimeout(() => {
         toastToggleRole("");
         roleResetForm();
@@ -130,12 +124,12 @@ function editRole(id: string): void {
     }
     document.querySelector<HTMLButtonElement>('#addrole').innerHTML = "Update"
     document.querySelector<HTMLDivElement>('form .title').innerHTML = "Edit Role"
-    document.querySelector<HTMLInputElement>('input[name="roleName"]').value = roleData.roleName;
+    document.querySelector<HTMLInputElement>('input[name="name"]').value = roleData.name;
     document.querySelector<HTMLSelectElement>('select[name="department"]').value = roleData.department;
     document.querySelector<HTMLSelectElement>('select[name="location"]').value = roleData.location;
     document.querySelector<HTMLTextAreaElement>('textarea[name="description"]').value = roleData.description;
     let employeesAssigned: Employee[] = roleData.employeesAssigned;
-    Employees = employeeServices.getAllEmployees()
+    Employees = employeeServices.getEmployees()
     Employees.forEach(employee => {
         employeesAssigned.forEach(emp => {
             employee.empno == emp.empno ? employee.isCheckedRole = true : ""

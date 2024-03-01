@@ -1,27 +1,42 @@
-function getAllEmployees() {
+function getEmployees() {
     return JSON.parse(localStorage.getItem("EmployeeData")) || [];
 }
-function setEmployeeData(data) {
+function setEmployees(data) {
     localStorage.setItem("EmployeeData", JSON.stringify(data));
 }
-function getEmployeeById(id) {
-    return getAllEmployees().find((employee) => employee.empno == id);
+function getById(id) {
+    return getEmployees().find((employee) => employee.empno == id);
 }
-function deleteEmployeeById(id) {
-    setEmployeeData(getAllEmployees().filter(employee => employee.empno != id));
+function deleteById(id) {
+    setEmployees(getEmployees().filter(employee => employee.empno != id));
 }
-function updateEmployee(employee) {
-    let employees = getAllEmployees();
+function update(employee) {
+    let employees = getEmployees();
     let index = employees.findIndex(ele => ele.empno == employee.empno);
     employees[index] = employee;
-    setEmployeeData(employees);
+    setEmployees(employees);
 }
-function addEmployee(employee) {
-    let employees = getAllEmployees();
+function create(employee) {
+    let employees = getEmployees();
     employees.push(employee);
-    setEmployeeData(employees);
+    setEmployees(employees);
 }
-function saveEmployee(employee, mode) {
-    mode == 'update' ? updateEmployee(employee) : addEmployee(employee);
+function save(employee) {
+    let emp = getById(employee.empno);
+    emp ? update(employee) : create(employee);
 }
-let employeeServices = { getAllEmployees, getEmployeeById, saveEmployee, deleteEmployeeById };
+function getLocations() {
+    let locations = new Set();
+    getEmployees().forEach(employee => {
+        locations.add(employee.location);
+    });
+    return [...locations];
+}
+function getDepartments() {
+    let departments = new Set();
+    getEmployees().forEach(employee => {
+        departments.add(employee.department);
+    });
+    return [...departments];
+}
+let employeeServices = { getEmployees, getById, getLocations, getDepartments, save, deleteById };

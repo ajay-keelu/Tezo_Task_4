@@ -8,7 +8,7 @@ class Employee {
     public mobile: string
     public dob: string
     public department: string
-    public status: string
+    public status: employeeStatus
     public jobTitle: string
     public joiningDate: string
     public assignManager: string
@@ -33,22 +33,3 @@ class Employee {
         this.assignProject = employee.assignProject;
     }
 }
-
-class Role {
-    public roleName: string
-    public department: string
-    public description: string
-    public location: string
-    public id: string
-    public employeesAssigned: Employee[]
-    constructor(role: Role) {
-        this.roleName = role.roleName
-        this.department = role.department
-        this.description = role.description
-        this.location = role.location
-        this.id = role.id
-        this.employeesAssigned = role.employeesAssigned
-    }
-}
-
-let models = { Employee, Role }

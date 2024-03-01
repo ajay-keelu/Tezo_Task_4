@@ -27,7 +27,7 @@ function validateFirstname(name: string): boolean {
 function validateEmployeeNumber(empno: string): boolean {
     let spanElement: HTMLElement | null = document.querySelector(`span#empno`);
     empno = `${parseInt(empno)}`
-    let employee: Employee = employeeServices.getEmployeeById(empno)
+    let employee: Employee = employeeServices.getById(empno)
     if (employee) {
         spanElement.innerHTML = '<b class="exclamation"><b>!</b></b> employee number already exists'
         spanElement.setAttribute('error', '')
@@ -40,4 +40,4 @@ function validateForm(employee: Employee, mode: string): boolean {
     return validateEmail(employee.email) && (!mode ? validateEmployeeNumber(employee.empno) : true) && validateFirstname(employee.firstname)
 }
 
-let validation = { validateForm, validateEmail, validateEmployeeNumber, validateFirstname }
+let validation = { validateForm }

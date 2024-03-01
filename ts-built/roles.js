@@ -7,7 +7,7 @@ function displayRoles(roles) {
         let imageDivision = `<div class="top"><img src="{{employeeImage}}" height="20px" alt="profile" /></div>`;
         let imageCardContainer = ((_a = role.employeesAssigned) === null || _a === void 0 ? void 0 : _a.length) > 4 ? `<div class="top"> +${role.employeesAssigned.length - 4}</div>` : "";
         imageCardContainer += role.employeesAssigned.splice(0, 4).map(employee => imageDivision.replace('{{employeeImage}}', employee.image));
-        roleCardData = roleCardData.replaceAll("{{roleId}}", role.id).replace("{{roleName}}", role.roleName).replace("{{roleLocation}}", role.location).replace("{{roleDepartment}}", role.department).replace('{{roleCardImageContainer}}', imageCardContainer);
+        roleCardData = roleCardData.replaceAll("{{roleId}}", role.id).replace("{{roleName}}", role.name).replace("{{roleLocation}}", role.location).replace("{{roleDepartment}}", role.department).replace('{{roleCardImageContainer}}', imageCardContainer);
         innerData += roleCardData;
     });
     let roleCards = document.querySelector('.roles-items');
